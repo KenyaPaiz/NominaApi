@@ -21,8 +21,19 @@ use Illuminate\Http\Request;
     return view('welcome');
 });*/
 
-Route::resource('/', "App\Http\Controllers\AdminController");
-Route::resource('/', "App\Http\Controllers\CompanyController");
-Route::resource('/', "App\Http\Controllers\EmployerController");
+//Route::resource('/', "App\Http\Controllers\AdminController");
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/admin', 'index');
+    Route::get('/mostraradmin/{id}', 'show'); 
+    Route::post('/insertaradmin', 'store');
+});
+Route::controller(CompanyController::class)->group(function () {
+    Route::get('/company', 'index');
+    Route::get('/mostrarCompany/{id}', 'show'); 
+    Route::post('/insertarCompany', 'store');
+});
+//Route::get('/admin/{id}',[AdminController::class, 'show']);
+//Route::resource('/', "App\Http\Controllers\CompanyController");
+//Route::resource('/', "App\Http\Controllers\EmployerController");
 
-Route::resource('/boss', "App\Http\Controllers\BossController");
+//Route::resource('/', "App\Http\Controllers\BossController");
