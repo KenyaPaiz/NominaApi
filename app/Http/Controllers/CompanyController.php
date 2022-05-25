@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Boss;
 use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
@@ -21,45 +22,49 @@ public function index(){
 }
 
 public function store(Request $request){
-    $data = array(
-        "id" => $request->input("id"),
-        "name" => $request->input("name"),
-        "address" => $request->input("address"),
-        "idBoss" => $request->input("idBoss"),
-    );
+    $token = $request->header('Authorization');
+    $boss = Boss::all();
+    $json = array();
 
-    if(!empty($data)){
-        $validate = Validator::make($data,[
-            'id' => 'required|numeric',
-            'name' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'idBoss' => 'required|numeric',
-        ]);
-
-        if($validate->fails()){
-            $error = $validate->errors();
-            $json = array(
-                "status" => 404,
-                "detail" => $error
+    foreach($boss as $key => $value){
+        if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+            $data = array(
+                "id" => $request->input("id"),
+                "name" => $request->input("name"),
+                "address" => $request->input("address")
             );
-        }else{
-            $company = new Company();
-            $company->id = $data["id"];
-            $company->name = $data["name"];
-            $company->address = $data["address"];
-            $company->idBoss = $data["idBoss"];
-            $company->save();
-
-            $json = array(
-                "status" => 200,
-                "detail" => "successfully registered company"
-            );
+        
+            if(!empty($data)){
+                $validate = Validator::make($data,[
+                    'name' => 'required|string|max:255',
+                    'address' => 'required|string|max:255',
+                ]);
+        
+                if($validate->fails()){
+                    $error = $validate->errors();
+                    $json = array(
+                        "status" => 404,
+                        "detail" => $error
+                    );
+                }else{
+                    $company = new Company();
+                    $company->name = $data["name"];
+                    $company->address = $data["address"];
+                    $company->idBoss = $value["id"];
+                    $company->save();
+        
+                    $json = array(
+                        "status" => 200,
+                        "detail" => "successfully registered company"
+                    );
+                }
+            }else{
+                $json = array(
+                    "status" => 404,
+                    "detail" => "Error registering"
+                );
+            }
         }
-    }else{
-        $json = array(
-            "status" => 404,
-            "detail" => "Error registering"
-        );
     }
 
     return json_encode($json, true);
