@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Boss;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+
+class BossController extends Controller
+{
+    //Aqui van todo los metodos para admin
+    public function index(){
+        $boss = Boss::all();
+        $json = array(
+            "status" => 200,
+            "detail" => $boss
+        );
+
+        echo json_encode($json, true);
+    }
+
+    public function store(Request $request){
+        $data = array(
+            "name" => $request->input("name"),
+            "lastName" => $request->input("lastName"),
+            "address" => $request->input("address"),
+            "phoneNumber" => $request->input("phoneNumber"),
+            "userName" => $request->input("userName"),
+            "password" => $request->input("password")
+        );
+
+        if(!empty($data)){
+            $validate = Validator::make($data,[
+                'name' => 'required|string|max:255',
+                'lastName' => 'required|string|max:255',
+                'address' => 'required|string|max:255',
+                'phoneNumber' => 'required|numeric',
+                'userName' => 'required|string|max:255|unique:boss',
+                'password' => 'required|string|max:255',
+            ]);
+
+            if($validate->fails()){
+                $error = $validate->errors();
+                $json = array(
+                    "status" => 404,
+                    "detail" => $error
+                );
+            }else{
+                $boss = new Boss();
+                $boss->name = $data["name"];
+                $boss->lastName = $data["lastName"];
+                $boss->address = $data["address"];
+                $boss->phoneNumber = $data["phoneNumber"];
+                $boss->userName = $data["userName"];
+                $boss->password = $data["password"];
+                $boss->save();
+
+                $json = array(
+                    "status" => 200,
+                    "detail" => "successfully registered Boss"
+                );
+            }
+        }else{
+            $json = array(
+                "status" => 404,
+                "detail" => "Error registering"
+            );
+        }
+
+        return json_encode($json, true);
+    }
+}
