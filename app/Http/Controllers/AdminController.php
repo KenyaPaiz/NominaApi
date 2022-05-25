@@ -70,4 +70,13 @@ class AdminController extends Controller
 
         return json_encode($json, true);
     }
+
+    //get an admin by id
+    public function show($id, Request $request){
+        $admin = Admin::where("id",$id)->get();
+
+        if(!empty($admin)){
+            
+        }
+    }
 }
