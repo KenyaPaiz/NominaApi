@@ -1,7 +1,9 @@
 <?php
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,13 @@ use Illuminate\Support\Facades\Route;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/',[AdminController::class, 'index']);
+//Route::get('/admin',[AdminController::class, 'index'])->name('admin');
+Route::resource('/','App\Http\Controllers\AdminController');
+
+/*Route::controller(AdminController::class)->group(function () {
+    Route::get('/admin', 'index');
+    Route::post('/insertar', 'store');
+});*/
+
+//Route::resource('/photos', AdminController::class);
+
