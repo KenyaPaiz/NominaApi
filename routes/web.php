@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ use Illuminate\Http\Request;
 });*/
 
 Route::resource('/', "App\Http\Controllers\AdminController");
-
+Route::resource('/', "App\Http\Controllers\CompanyController");
 Route::resource('/', "App\Http\Controllers\EmployerController");
 
 Route::resource('/', "App\Http\Controllers\BossController");
