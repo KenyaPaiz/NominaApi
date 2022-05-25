@@ -33,7 +33,7 @@ class EmployeesController extends Controller
                     "phoneNumber" => $request->input("phoneNumber"),
                     "address" => $request->input("address"),
                     "salary" => $request->input("salary"),
-                    "taxes" => $request->input("taxes"),
+                    "idCompany" => $request->input("idCompany"),
                     "userName" => $request->input("userName"),
                     "password" => $request->input("password"),
                 );
@@ -46,7 +46,7 @@ class EmployeesController extends Controller
                         'phoneNumber' => 'required|numeric',
                         'address' => 'required|string|max:255',
                         'salary' => 'required|numeric',
-                        'taxes' => 'required|numeric',
+                        'idCompany' => 'required|string|max:255',
                         'userName' => 'required|string|max:255',
                         'password' => 'required|string|max:255',
                     ]); //endif
@@ -64,7 +64,7 @@ class EmployeesController extends Controller
                         $employee->phoneNumber = $data["phoneNumber"];
                         $employee->address = $data["address"];
                         $employee->salary = $data["salary"];
-                        $employee->taxes = $data["taxes"];
+                        $employee->taxes = $data["idCompany"];
                         $employee->userName = $data["userName"];
                         $employee->password = $data["password"];
                         $employee->idBoss = $value["id"];
@@ -84,5 +84,45 @@ class EmployeesController extends Controller
             }
             return json_encode($json, true);
         }
+    }
+    public function update($id){
+
+    }
+
+    public function show($id){
+        $employee = Employee::where("id",$id)->get();
+
+        if(!empty($employee)){
+           $json = array(
+                "status" => 200,
+                "detail" => $employee
+           );
+        }else{
+            $json = array(
+                "status" => 200,
+                "detail" => "error getting admin"
+           );
+        }
+
+        return json_encode($json, true);
+    }
+    public function destroy($request, $id){
+        $token = $request->header('Authorization');
+        $boss = Boss::all();
+        $json = array();
+
+        foreach($boss as $value){
+        if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+            $post = Employee::where('id', $id);
+            $post->delete();
+    
+            $json = array(
+                "status" => 200,
+                "detail" => "delete employee"
+            );
+
+        }
+        return json_encode($json, true);
+    }
     }
 }
