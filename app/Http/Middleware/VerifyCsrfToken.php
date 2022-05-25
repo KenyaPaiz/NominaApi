@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'http://localhost/payrollapi/public/',
+        'http://localhost/payrollapi/public/boss',
         'http://localhost/payrollapi/public/*'
     ];
 }

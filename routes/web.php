@@ -25,4 +25,4 @@ Route::resource('/', "App\Http\Controllers\AdminController");
 Route::resource('/', "App\Http\Controllers\CompanyController");
 Route::resource('/', "App\Http\Controllers\EmployerController");
 
-Route::resource('/', "App\Http\Controllers\BossController");
+Route::resource('/boss', "App\Http\Controllers\BossController");
