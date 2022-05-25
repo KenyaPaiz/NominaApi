@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Company;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 
 {
 public function index(){
-    $admin = Company::all();
+    $company = Company::all();
     $json = array(
         "status" => 200,
         "detail" => $company
