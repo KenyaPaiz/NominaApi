@@ -14,10 +14,11 @@ class VerifyCsrfToken extends Middleware
 
      //cambiar la direccion por su direccion local
     protected $except = [
-        //'http://127.0.0.1:8000/insertaradmin',
-        //'http://127.0.0.1:8000/insertarCompany'
-        //'http://localhost/ClasesFsj2021/PayrollApi/public/companyP',
-        'http://localhost/bootcamps/PayrollApi/public/'
+          'http://localhost/PayrollApi/public/admin',
+          'http://localhost/PayrollApi/public/admin/*',
+          'http://localhost/PayrollApi/public/boss',
+          'http://localhost/PayrollApi/public/company',
+          'http://localhost/PayrollApi/public/employee'
 
 
     ];
