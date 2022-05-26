@@ -103,4 +103,22 @@ class BossController extends Controller
 
         return json_encode($json, true);
     }
+
+    public function show($id){
+        $boss = Boss::where("id",$id)->get();
+
+        if(!empty($employee)){
+           $json = array(
+                "status" => 200,
+                "detail" => $boss
+           );
+        }else{
+            $json = array(
+                "status" => 200,
+                "detail" => "error getting boss"
+           );
+        }
+
+        return json_encode($json, true);
+    }
 }
