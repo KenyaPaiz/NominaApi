@@ -6,11 +6,17 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Boss;
+use Illuminate\Support\Facades\DB;
 
 class EmployeesController extends Controller
 {
     public function index(){
-        $employee = Employee::all();
+        //$employee = Employee::all();
+        $employee = DB::table('employee')->join('boss','employee.idBoss','=','boss.id')
+                    ->join('company','employee.idCompany','=','company.id')
+                    ->select('employee.name','employee.lastName','employee.phoneNumber',
+                             'employee.address','employee.salary','employee.userName',
+                             'boss.name as boss','company.name as company')->get();
         $json = array(
             "status" => 200,
             "detalle" => $employee
@@ -85,13 +91,42 @@ class EmployeesController extends Controller
             return json_encode($json, true);
         }
     }
-    public function update($id){
+    public function update(Request $request, $id){
+        $token = $request->header('Authorization');
+        $boss = Boss::all();
+        $json = array();
+
+        foreach($boss as $value){
+        if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+            $data = array(
+                "name" => $request->input("name"),
+                "lastName" => $request->input("lastName"),
+                "address" => $request->input("address"),
+                "phoneNumber" => $request->input("phoneNumber"),
+                "userName" => $request->input("userName"),
+                "password" => $request->input("password")
+            );
+
+            $employee = Employee::where("id",$id)->update($data);
+
+            $json = array(
+                "status" => 200,
+                "detail" => "successfully updated admin"
+            );
+        }
+        return json_encode($json, true);
+        }
 
     }
 
     public function show($id){
-        $employee = Employee::where("id",$id)->get();
-
+        $employee = Employee::where('employee.id',$id)->join('boss','employee.idBoss','=','boss.id')
+                            ->join('company','employee.idCompany','=','company.id')
+                            ->select('employee.name','employee.lastName','employee.phoneNumber',
+                                    'employee.address','employee.salary','employee.userName',
+                                    'boss.name as boss','company.name as company')
+                            ->get();
+        
         if(!empty($employee)){
            $json = array(
                 "status" => 200,
@@ -106,7 +141,7 @@ class EmployeesController extends Controller
 
         return json_encode($json, true);
     }
-    public function destroy($request, $id){
+    public function destroy(Request $request, $id){
         $token = $request->header('Authorization');
         $boss = Boss::all();
         $json = array();
