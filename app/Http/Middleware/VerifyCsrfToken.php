@@ -17,7 +17,9 @@ class VerifyCsrfToken extends Middleware
           'http://localhost/PayrollApi/public/admin',
           'http://localhost/PayrollApi/public/admin/*',
           'http://localhost/PayrollApi/public/boss',
-          'http://localhost/PayrollApi/public/company',
+          'http://localhost/PayrollApi/public/boss/*',
+          'http://localhost/PayrollApi/public/company/',
+          'http://localhost/PayrollApi/public/company/*',
           'http://localhost/PayrollApi/public/employee',
           'http://localhost/PayrollApi/public/employee/*'
 

@@ -49,6 +49,6 @@ Route::post('/',[EmployeesController::class, 'store']); */
 
 Route::resource('/admin', "App\Http\Controllers\AdminController");
 Route::resource('/boss',  "App\Http\Controllers\BossController");
-Route::resource('/company',  "App\Http\Controllers\CompanyController");
+Route::resource('/company', "App\Http\Controllers\CompanyController");
 Route::resource('/employee',"App\Http\Controllers\EmployeesController");
 
