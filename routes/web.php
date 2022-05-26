@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/',[AdminController::class, 'index']);
+/* Route::get('/',[AdminController::class, 'index']); */
+Route::resource('/', "App\Http\Controllers\AdminController");
