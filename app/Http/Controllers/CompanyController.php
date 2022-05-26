@@ -91,7 +91,6 @@ public function show($id){
 
 public function update($id, Request $request){
         $data = array(
-            "id" => $request->input("id"),
             "name" => $request->input("name"),
             "address" => $request->input("address")
             );
