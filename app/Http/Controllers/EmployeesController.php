@@ -120,14 +120,13 @@ class EmployeesController extends Controller
     }
 
     public function show($id){
-        $employee = Employee::where("id",$id)->join('boss','employee.idBoss','=','boss.id')
+        $employee = Employee::where('employee.id',$id)->join('boss','employee.idBoss','=','boss.id')
                             ->join('company','employee.idCompany','=','company.id')
                             ->select('employee.name','employee.lastName','employee.phoneNumber',
                                     'employee.address','employee.salary','employee.userName',
                                     'boss.name as boss','company.name as company')
                             ->get();
         
-
         if(!empty($employee)){
            $json = array(
                 "status" => 200,
