@@ -58,13 +58,13 @@ class AdminController extends Controller
 
                 $json = array(
                     "status" => 200,
-                    "detail" => "successfully registered admin"
+                    "detail" => "The admin was registering."
                 );
             }
         }else{
             $json = array(
                 "status" => 404,
-                "detail" => "Error registering"
+                "detail" => "There was an error registering."
             );
         }
 
@@ -83,7 +83,7 @@ class AdminController extends Controller
         }else{
             $json = array(
                 "status" => 200,
-                "detail" => "error getting admin"
+                "detail" => "Error getting admin."
            );
         }
 
@@ -105,7 +105,7 @@ class AdminController extends Controller
 
         $json = array(
             "status" => 200,
-            "detail" => "successfully updated admin"
+            "detail" => "The admin was update."
         );
 
         return json_encode($json, true);
@@ -118,7 +118,7 @@ class AdminController extends Controller
 
         $json = array(
             "status" => 200,
-            "detail" => "delete admin"
+            "detail" => "The admin was deleted."
         );
 
         return json_encode($json, true);

@@ -20,35 +20,36 @@ use Illuminate\Http\Request;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::resource('/admin', "App\Http\Controllers\AdminController");
+Route::resource('/boss',  "App\Http\Controllers\BossController");
+Route::resource('/company', "App\Http\Controllers\CompanyController");
+Route::resource('/employee',"App\Http\Controllers\EmployeesController");
 
-//Route::resource('/', "App\Http\Controllers\AdminController");
-/*Route::controller(AdminController::class)->group(function () {
+/*
+Route::resource('/', "App\Http\Controllers\AdminController");
+
+Route::controller(AdminController::class)->group(function () {
     Route::get('/admin', 'index');
     Route::get('/mostraradmin/{id}', 'show'); 
     Route::post('/insertaradmin', 'store');
 });
+
 Route::controller(CompanyController::class)->group(function () {
     Route::get('/company', 'index');
     Route::get('/mostrarCompany/{id}', 'show'); 
     Route::post('/insertarCompany', 'store');
-});*/
-//Route::get('/admin/{id}',[AdminController::class, 'show']);
-//Route::resource('/', "App\Http\Controllers\CompanyController");
-//Route::resource('/', "App\Http\Controllers\EmployerController");
+});
 
-//Route::resource('/', "App\Http\Controllers\BossController");
-//Route::get('/company',[CompanyController::class, 'index']);
-//Route::post('/companyP',[CompanyController::class, 'store']);
+Route::get('/admin/{id}',[AdminController::class, 'show']);
+Route::resource('/', "App\Http\Controllers\CompanyController");
+Route::resource('/', "App\Http\Controllers\EmployerController");
 
-/* Route::get('/',[EmployeesController::class, 'index']);
-Route::post('/',[EmployeesController::class, 'store']); */
-//Route::resource('/', "App\Http\Controllers\EmployeesController");
+Route::resource('/', "App\Http\Controllers\BossController");
+Route::get('/company',[CompanyController::class, 'index']);
+Route::post('/companyP',[CompanyController::class, 'store']);
 
-Route::resource('/admin', "App\Http\Controllers\AdminController");
-Route::resource('/boss',  "App\Http\Controllers\BossController");
-Route::resource('/company',  "App\Http\Controllers\CompanyController");
-Route::resource('/employee',"App\Http\Controllers\EmployeesController");
+Route::get('/',[EmployeesController::class, 'index']);
+Route::post('/',[EmployeesController::class, 'store']);
+Route::resource('/', "App\Http\Controllers\EmployeesController");
+*/
 

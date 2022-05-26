@@ -55,7 +55,7 @@ public function store(Request $request){
         
                     $json = array(
                         "status" => 200,
-                        "detail" => "successfully registered company"
+                        "detail" => "Successfully registered company"
                     );
                 }
             }else{
@@ -82,7 +82,7 @@ public function show($id){
         }else{
             $json = array(
                 "status" => 200,
-                "detail" => "Sorry, we don't any company with this name"
+                "detail" => "Sorry, we don'have this company"
             );
         }
 
@@ -99,7 +99,7 @@ public function update($id, Request $request){
 
         $json = array(
             "status" => 200,
-            "detail" => "successfully updated company"
+            "detail" => "Successfully updated company"
             );
 
     return json_encode($json, true);
@@ -112,7 +112,7 @@ public function destroy($id){
 
          $json = array(
             "status" => 200,
-            "detail" => "Company delited"
+            "detail" => "The company was deleted"
         );
 
     return json_encode($json, true);

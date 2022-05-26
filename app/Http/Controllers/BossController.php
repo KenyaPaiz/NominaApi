@@ -58,14 +58,32 @@ class BossController extends Controller
 
                 $json = array(
                     "status" => 200,
-                    "detail" => "successfully registered Boss"
+                    "detail" => "Successfully registered Boss."
                 );
             }
         }else{
             $json = array(
                 "status" => 404,
-                "detail" => "Error registering"
+                "detail" => "Error registering."
             );
+        }
+
+        return json_encode($json, true);
+    }
+
+    public function show($id){
+        $boss = Boss::where("id",$id)->get();
+
+        if(!empty($employee)){
+           $json = array(
+                "status" => 200,
+                "detail" => $boss
+           );
+        }else{
+            $json = array(
+                "status" => 200,
+                "detail" => "Error getting boss."
+           );
         }
 
         return json_encode($json, true);
@@ -85,7 +103,7 @@ class BossController extends Controller
 
         $json = array(
             "status" => 200,
-            "detail" => "successfully updated boss"
+            "detail" => "Successfully updated boss."
         );
 
         return json_encode($json, true);
@@ -98,27 +116,10 @@ class BossController extends Controller
 
         $json = array(
             "status" => 200,
-            "detail" => "delete boss"
+            "detail" => "The boss was deleted."
         );
 
         return json_encode($json, true);
     }
 
-    public function show($id){
-        $boss = Boss::where("id",$id)->get();
-
-        if(!empty($boss)){
-           $json = array(
-                "status" => 200,
-                "detail" => $boss
-           );
-        }else{
-            $json = array(
-                "status" => 200,
-                "detail" => "error getting boss"
-           );
-        }
-
-        return json_encode($json, true);
-    }
 }

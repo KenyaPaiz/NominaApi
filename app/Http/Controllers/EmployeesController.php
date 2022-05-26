@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Boss;
 use Illuminate\Support\Facades\DB;
 
-class EmployeesController extends Controller
-{
+class EmployeesController extends Controller{
+
     public function index(){
-        //$employee = Employee::all();
+        //Select the table to show the employees with the boss and company name.
         $employee = DB::table('employee')->join('boss','employee.idBoss','=','boss.id')
                     ->join('company','employee.idCompany','=','company.id')
                     ->select('employee.name','employee.lastName','employee.phoneNumber',
@@ -31,6 +31,7 @@ class EmployeesController extends Controller
         $json = array();
 
         foreach($boss as $value){
+            //Make the validator so that only the admin can register.
             if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){ 
                 $data = array(
 
@@ -55,7 +56,7 @@ class EmployeesController extends Controller
                         'idCompany' => 'required|string|max:255',
                         'userName' => 'required|string|max:255',
                         'password' => 'required|string|max:255',
-                    ]); //endif
+                    ]); 
             
                     if($validate->fails()){
                         $error = $validate->errors();
@@ -78,7 +79,7 @@ class EmployeesController extends Controller
             
                         $json = array(
                             "status" => 200,
-                            "detail" => "successfully registered employee"
+                            "detail" => "Successfully registered employee"
                         );
                     }
                 }else{
@@ -91,35 +92,9 @@ class EmployeesController extends Controller
             return json_encode($json, true);
         }
     }
-    public function update(Request $request, $id){
-        $token = $request->header('Authorization');
-        $boss = Boss::all();
-        $json = array();
-
-        foreach($boss as $value){
-        if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
-            $data = array(
-                "name" => $request->input("name"),
-                "lastName" => $request->input("lastName"),
-                "address" => $request->input("address"),
-                "phoneNumber" => $request->input("phoneNumber"),
-                "userName" => $request->input("userName"),
-                "password" => $request->input("password")
-            );
-
-            $employee = Employee::where("id",$id)->update($data);
-
-            $json = array(
-                "status" => 200,
-                "detail" => "successfully updated admin"
-            );
-        }
-        return json_encode($json, true);
-        }
-
-    }
 
     public function show($id){
+        //Select the employee by the id with the boss and company name.
         $employee = Employee::where('employee.id',$id)->join('boss','employee.idBoss','=','boss.id')
                             ->join('company','employee.idCompany','=','company.id')
                             ->select('employee.name','employee.lastName','employee.phoneNumber',
@@ -135,29 +110,61 @@ class EmployeesController extends Controller
         }else{
             $json = array(
                 "status" => 200,
-                "detail" => "error getting admin"
+                "detail" => "Error getting employee."
            );
         }
 
         return json_encode($json, true);
     }
+
+    public function update(Request $request, $id){
+        $token = $request->header('Authorization');
+        $boss = Boss::all();
+        $json = array();
+
+        foreach($boss as $value){
+            //base64_encode is for encrypt the params
+        if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+            $data = array(
+                "name" => $request->input("name"),
+                "lastName" => $request->input("lastName"),
+                "address" => $request->input("address"),
+                "phoneNumber" => $request->input("phoneNumber"),
+                "userName" => $request->input("userName"),
+                "password" => $request->input("password")
+            );
+
+            //Update the employee by id.
+            $employee = Employee::where("id",$id)->update($data);
+
+            $json = array(
+                "status" => 200,
+                "detail" => "Successfully updated employee."
+            );
+        }
+        return json_encode($json, true);
+        }
+
+    }
+
     public function destroy(Request $request, $id){
         $token = $request->header('Authorization');
         $boss = Boss::all();
         $json = array();
 
         foreach($boss as $value){
-        if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
-            $post = Employee::where('id', $id);
-            $post->delete();
-    
-            $json = array(
-                "status" => 200,
-                "detail" => "delete employee"
-            );
+            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+                //Delete the employee by id.
+                $post = Employee::where('id', $id);
+                $post->delete();
+        
+                $json = array(
+                    "status" => 200,
+                    "detail" => "The employee was delete."
+                );
 
-        }
+            }   
         return json_encode($json, true);
-    }
+        }
     }
 }
