@@ -91,7 +91,31 @@ class EmployeesController extends Controller
             return json_encode($json, true);
         }
     }
-    public function update($id){
+    public function update(Request $request, $id){
+        $token = $request->header('Authorization');
+        $boss = Boss::all();
+        $json = array();
+
+        foreach($boss as $value){
+        if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+            $data = array(
+                "name" => $request->input("name"),
+                "lastName" => $request->input("lastName"),
+                "address" => $request->input("address"),
+                "phoneNumber" => $request->input("phoneNumber"),
+                "userName" => $request->input("userName"),
+                "password" => $request->input("password")
+            );
+
+            $employee = Employee::where("id",$id)->update($data);
+
+            $json = array(
+                "status" => 200,
+                "detail" => "successfully updated admin"
+            );
+        }
+        return json_encode($json, true);
+        }
 
     }
 
