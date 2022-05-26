@@ -12,16 +12,15 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
 
-     //cambiar la direccion por su direccion local
     protected $except = [
           'http://localhost/PayrollApi/public/admin',
-          'http://localhost/PayrollApi/public/admin/*',
+          'http://localhost/PayrollApi/public/admin/*', //* = by id
           'http://localhost/PayrollApi/public/boss',
-          'http://localhost/PayrollApi/public/boss/*',
+          'http://localhost/PayrollApi/public/boss/*', //* = by id
           'http://localhost/PayrollApi/public/company/',
-          'http://localhost/PayrollApi/public/company/*',
+          'http://localhost/PayrollApi/public/company/*', //by id
           'http://localhost/PayrollApi/public/employee',
-          'http://localhost/PayrollApi/public/employee/*'
+          'http://localhost/PayrollApi/public/employee/*' //* = by id
 
 
     ];
