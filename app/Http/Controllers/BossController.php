@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Admin;
+use App\Models\Boss;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class AdminController extends Controller
+class BossController extends Controller
 {
     //Aqui van todo los metodos para admin
     public function index(){
-        $admin = Admin::all();
+        $boss = Boss::all();
         $json = array(
             "status" => 200,
-            "detail" => $admin
+            "detail" => $boss
         );
 
         echo json_encode($json, true);
@@ -36,7 +36,7 @@ class AdminController extends Controller
                 'lastName' => 'required|string|max:255',
                 'address' => 'required|string|max:255',
                 'phoneNumber' => 'required|numeric',
-                'userName' => 'required|string|max:255|unique:admin',
+                'userName' => 'required|string|max:255|unique:boss',
                 'password' => 'required|string|max:255',
             ]);
 
@@ -47,18 +47,18 @@ class AdminController extends Controller
                     "detail" => $error
                 );
             }else{
-                $admin = new Admin();
-                $admin->name = $data["name"];
-                $admin->lastName = $data["lastName"];
-                $admin->address = $data["address"];
-                $admin->phoneNumber = $data["phoneNumber"];
-                $admin->userName = $data["userName"];
-                $admin->password = $data["password"];
-                $admin->save();
+                $boss = new Boss();
+                $boss->name = $data["name"];
+                $boss->lastName = $data["lastName"];
+                $boss->address = $data["address"];
+                $boss->phoneNumber = $data["phoneNumber"];
+                $boss->userName = $data["userName"];
+                $boss->password = $data["password"];
+                $boss->save();
 
                 $json = array(
                     "status" => 200,
-                    "detail" => "successfully registered admin"
+                    "detail" => "successfully registered Boss"
                 );
             }
         }else{
@@ -66,25 +66,6 @@ class AdminController extends Controller
                 "status" => 404,
                 "detail" => "Error registering"
             );
-        }
-
-        return json_encode($json, true);
-    }
-
-    //get an admin by id
-    public function show($id){
-        $admin = Admin::where("id",$id)->get();
-
-        if(!empty($admin)){
-           $json = array(
-                "status" => 200,
-                "detail" => $admin
-           );
-        }else{
-            $json = array(
-                "status" => 200,
-                "detail" => "error getting admin"
-           );
         }
 
         return json_encode($json, true);
