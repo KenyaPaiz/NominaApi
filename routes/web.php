@@ -21,3 +21,4 @@ use Illuminate\Http\Request;
 });*/
 
 Route::resource('/', "App\Http\Controllers\AdminController");
+Route::resource('/', "App\Http\Controllers\EmployeeController");
