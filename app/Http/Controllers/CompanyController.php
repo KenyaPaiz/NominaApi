@@ -70,7 +70,9 @@ public function store(Request $request){
     return json_encode($json, true);
 }
 public function show($id){
-    $company = Company::where("id",$id)->get();
+    $company = Company::where('company.id',$id)->join('boss','company.idBoss','=','boss.id')
+                            ->select('company.name','company.address','boss.name as boss')
+                            ->get();
 
         if(!empty($company)){
             $json = array(

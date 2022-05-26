@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2022 a las 19:39:43
+-- Tiempo de generación: 25-05-2022 a las 17:45:23
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -42,11 +42,10 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `lastName`, `address`, `phoneNumber`, `userName`, `password`) VALUES
-(1, 'prueba', 'prueba', 'diree', 75895, 'prueb', '123'),
-(2, 'Ivan', 'Montenegro', 'San Salvador', 7895623, 'ivanadmin', '12345'),
+(2, 'prueba', 'segunda', 'diree', 78965234, 'prueb', '123'),
 (3, 'Rebeca', 'Ruano', 'Soyapango', 75236970, 'rebequita', '1234'),
-(4, 'Miguel', 'Solar', 'Soyapango', 75236578, 'migue', '1234456'),
-(5, 'prueba', '2ert', 'Soyapango', 752895, 'prueba', '1234456');
+(5, 'prueba', '2ert', 'Soyapango', 752895, 'prueba', '1234456'),
+(6, 'prueba2', '2ert2', 'Soyapango2', 752812, 'prueba22', '1234456');
 
 -- --------------------------------------------------------
 
@@ -69,7 +68,8 @@ CREATE TABLE `boss` (
 --
 
 INSERT INTO `boss` (`id`, `name`, `lastName`, `address`, `phoneNumber`, `userName`, `password`) VALUES
-(1, 'Luis', 'Panameño', 'Antiguo Cuscatlan', 78956324, 'luisito', '123456');
+(1, 'Luis', 'Panameño', 'Antiguo Cuscatlan', 78956324, 'luisito', '123456'),
+(2, 'Angel', 'Aguilar', 'San Salvador', 75894623, 'angel1', '123456');
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,8 @@ CREATE TABLE `company` (
 
 INSERT INTO `company` (`id`, `name`, `address`, `idBoss`) VALUES
 (2, 'comunication2', 'San Salvador', 1),
-(3, 'comunication3', 'San Salvador', 1);
+(3, 'comunication3', 'San Salvador', 1),
+(4, 'comunication4', 'San Miguel', 1);
 
 -- --------------------------------------------------------
 
@@ -105,11 +106,19 @@ CREATE TABLE `employee` (
   `phoneNumber` int(8) NOT NULL,
   `address` varchar(100) NOT NULL,
   `salary` float NOT NULL,
-  `taxes` float NOT NULL,
   `userName` varchar(10) NOT NULL,
   `password` varchar(8) NOT NULL,
-  `idBoss` int(11) NOT NULL
+  `idBoss` int(11) NOT NULL,
+  `idCompany` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `employee`
+--
+
+INSERT INTO `employee` (`id`, `name`, `lastName`, `phoneNumber`, `address`, `salary`, `userName`, `password`, `idBoss`, `idCompany`) VALUES
+(1, 'Jose', 'Landaverde', 75896323, 'Santa Ana', 500, 'jose', '123', 1, 0),
+(2, 'Maria', 'Solar', 75896587, 'Santa Tecla', 450, 'marias', '12345', 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -139,7 +148,8 @@ ALTER TABLE `company`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_idBoss` (`idBoss`);
+  ADD KEY `fk_idBoss` (`idBoss`),
+  ADD KEY `fk_idCompany` (`idCompany`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -149,25 +159,25 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `boss`
 --
 ALTER TABLE `boss`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
