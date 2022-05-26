@@ -70,4 +70,37 @@ class BossController extends Controller
 
         return json_encode($json, true);
     }
+
+    public function update($id, Request $request){
+        $data = array(
+            "name" => $request->input("name"),
+            "lastName" => $request->input("lastName"),
+            "address" => $request->input("address"),
+            "phoneNumber" => $request->input("phoneNumber"),
+            "userName" => $request->input("userName"),
+            "password" => $request->input("password")
+        );
+
+        $admin = Boss::where("id",$id)->update($data);
+
+        $json = array(
+            "status" => 200,
+            "detail" => "successfully updated boss"
+        );
+
+        return json_encode($json, true);
+
+    }
+
+    public function destroy($id){
+        $post = Boss::where('id', $id);
+        $post->delete();
+
+        $json = array(
+            "status" => 200,
+            "detail" => "delete boss"
+        );
+
+        return json_encode($json, true);
+    }
 }
