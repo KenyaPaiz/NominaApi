@@ -3,7 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\BossController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 /*
@@ -37,5 +40,15 @@ Route::controller(CompanyController::class)->group(function () {
 //Route::resource('/', "App\Http\Controllers\EmployerController");
 
 //Route::resource('/', "App\Http\Controllers\BossController");
-Route::get('/company',[CompanyController::class, 'index']);
-Route::post('/companyP',[CompanyController::class, 'store']);
+//Route::get('/company',[CompanyController::class, 'index']);
+//Route::post('/companyP',[CompanyController::class, 'store']);
+
+/* Route::get('/',[EmployeesController::class, 'index']);
+Route::post('/',[EmployeesController::class, 'store']); */
+//Route::resource('/', "App\Http\Controllers\EmployeesController");
+
+Route::resource('/admin', "App\Http\Controllers\AdminController");
+Route::resource('/boss',  "App\Http\Controllers\BossController");
+Route::resource('/company',  "App\Http\Controllers\CompanyController");
+Route::resource('/employee',"App\Http\Controllers\EmployeesController");
+

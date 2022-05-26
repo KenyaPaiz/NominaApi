@@ -17,7 +17,7 @@ class AdminController extends Controller
             "detail" => $admin
         );
 
-        echo json_encode($json, true);
+        return json_encode($json, true);
     }
 
     public function store(Request $request){
@@ -86,6 +86,40 @@ class AdminController extends Controller
                 "detail" => "error getting admin"
            );
         }
+
+        return json_encode($json, true);
+    }
+
+    public function update($id, Request $request){
+        //$getAdmin = Admin::where("id",$id)->get();
+        $data = array(
+            "name" => $request->input("name"),
+            "lastName" => $request->input("lastName"),
+            "address" => $request->input("address"),
+            "phoneNumber" => $request->input("phoneNumber"),
+            "userName" => $request->input("userName"),
+            "password" => $request->input("password")
+        );
+
+        $admin = Admin::where("id",$id)->update($data);
+
+        $json = array(
+            "status" => 200,
+            "detail" => "successfully updated admin"
+        );
+
+        return json_encode($json, true);
+
+    }
+
+    public function destroy($id){
+        $post = Admin::where('id', $id);
+        $post->delete();
+
+        $json = array(
+            "status" => 200,
+            "detail" => "delete admin"
+        );
 
         return json_encode($json, true);
     }
