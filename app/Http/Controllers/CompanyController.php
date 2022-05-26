@@ -69,4 +69,51 @@ public function store(Request $request){
 
     return json_encode($json, true);
 }
+public function show($id){
+    $company = Company::where("id",$id)->get();
+
+        if(!empty($company)){
+            $json = array(
+                "status" => 200,
+                "detail" => $company
+            );
+        }else{
+            $json = array(
+                "status" => 200,
+                "detail" => "Sorry, we don't any company with this name"
+            );
+        }
+
+    return json_encode($json, true);
+}
+
+public function update($id, Request $request){
+        $data = array(
+            "id" => $request->input("id"),
+            "name" => $request->input("name"),
+            "address" => $request->input("address")
+            );
+
+        $company = Company::where("id",$id)->update($data);
+
+        $json = array(
+            "status" => 200,
+            "detail" => "successfully updated company"
+            );
+
+    return json_encode($json, true);
+
+}
+
+public function destroy($id){
+        $post = Company::where('id', $id);
+        $post->delete();
+
+         $json = array(
+            "status" => 200,
+            "detail" => "Company delited"
+        );
+
+    return json_encode($json, true);
+}
 }
