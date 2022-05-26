@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class BossController extends Controller
 {
-    //Aqui van todo los metodos para admin
     public function index(){
         $boss = Boss::all();
         $json = array(
@@ -73,8 +72,7 @@ class BossController extends Controller
 
     public function show($id){
         $boss = Boss::where("id",$id)->get();
-
-        if(!empty($employee)){
+        if(!empty($boss)){
            $json = array(
                 "status" => 200,
                 "detail" => $boss
@@ -99,7 +97,7 @@ class BossController extends Controller
             "password" => $request->input("password")
         );
 
-        $admin = Boss::where("id",$id)->update($data);
+        $boss = Boss::where("id",$id)->update($data);
 
         $json = array(
             "status" => 200,
@@ -113,7 +111,6 @@ class BossController extends Controller
     public function destroy($id){
         $post = Boss::where('id', $id);
         $post->delete();
-
         $json = array(
             "status" => 200,
             "detail" => "The boss was deleted."

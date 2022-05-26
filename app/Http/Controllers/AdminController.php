@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    //Aqui van todo los metodos para admin
     public function index(){
         $admin = Admin::all();
         $json = array(
