@@ -17,7 +17,8 @@ class VerifyCsrfToken extends Middleware
         //'http://127.0.0.1:8000/insertaradmin',
         //'http://127.0.0.1:8000/insertarCompany'
         'http://localhost/ClasesFsj2021/PayrollApi/public/',
-        'http://localhost/ClasesFsj2021/PayrollApi/public/companyP'
+        'http://localhost/ClasesFsj2021/PayrollApi/public/companyP',
+        'http://localhost/ClasesFSJ/proyecto4/PayrollApi/public'
 
     ];
 }
