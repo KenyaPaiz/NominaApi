@@ -107,7 +107,7 @@ class BossController extends Controller
     public function show($id){
         $boss = Boss::where("id",$id)->get();
 
-        if(!empty($employee)){
+        if(!empty($boss)){
            $json = array(
                 "status" => 200,
                 "detail" => $boss
