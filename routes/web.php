@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\BossController;
+use App\Http\Controllers\PayrollController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -24,6 +25,8 @@ Route::resource('/admin', "App\Http\Controllers\AdminController");
 Route::resource('/boss',  "App\Http\Controllers\BossController");
 Route::resource('/company', "App\Http\Controllers\CompanyController");
 Route::resource('/employee',"App\Http\Controllers\EmployeesController");
+
+Route::get('/taxes/{idEmp}',[PayrollController::class,'calculateTaxes']);
 
 /*
 Route::resource('/', "App\Http\Controllers\AdminController");

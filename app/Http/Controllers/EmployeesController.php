@@ -30,19 +30,19 @@ class EmployeesController extends Controller{
         $boss = Boss::all();
         $json = array();
 
-        foreach($boss as $value){
+        foreach($boss as $key => $value){
             //Make the validator so that only the admin can register.
             if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){ 
                 $data = array(
-
                     "name" => $request->input("name"),
                     "lastName" => $request->input("lastName"),
                     "phoneNumber" => $request->input("phoneNumber"),
                     "address" => $request->input("address"),
+                    "position" => $request->input("position"),
                     "salary" => $request->input("salary"),
-                    "idCompany" => $request->input("idCompany"),
                     "userName" => $request->input("userName"),
                     "password" => $request->input("password"),
+                    "idCompany" => $request->input("idCompany")
                 );
             
                 if(!empty($data)){
@@ -52,10 +52,11 @@ class EmployeesController extends Controller{
                         'lastName' => 'required|string|max:255',
                         'phoneNumber' => 'required|numeric',
                         'address' => 'required|string|max:255',
+                        'position' => 'required|string|max:255',
                         'salary' => 'required|numeric',
-                        'idCompany' => 'required|string|max:255',
                         'userName' => 'required|string|max:255',
                         'password' => 'required|string|max:255',
+                        'idCompany' => 'required|numeric'
                     ]); 
             
                     if($validate->fails()){
@@ -70,11 +71,12 @@ class EmployeesController extends Controller{
                         $employee->lastName = $data["lastName"];
                         $employee->phoneNumber = $data["phoneNumber"];
                         $employee->address = $data["address"];
+                        $employee->position = $data["position"];
                         $employee->salary = $data["salary"];
-                        $employee->taxes = $data["idCompany"];
                         $employee->userName = $data["userName"];
                         $employee->password = $data["password"];
                         $employee->idBoss = $value["id"];
+                        $employee->idCompany = $data["idCompany"];
                         $employee->save();
             
                         $json = array(
@@ -89,8 +91,9 @@ class EmployeesController extends Controller{
                     );
                 }
             }
-            return json_encode($json, true);
+            
         }
+        return json_encode($json, true);
     }
 
     public function show($id){
@@ -123,7 +126,7 @@ class EmployeesController extends Controller{
         $json = array();
 
         foreach($boss as $value){
-            //base64_encode is for encrypt the params
+        //base64_encode is for encrypt the params
         if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
             $data = array(
                 "name" => $request->input("name"),
