@@ -99,11 +99,11 @@ class EmployeesController extends Controller{
     public function show($id){
         //Select the employee by the id with the boss and company name.
         $employee = Employee::where('employee.id',$id)->join('boss','employee.idBoss','=','boss.id')
-                            ->join('company','employee.idCompany','=','company.id')
-                            ->select('employee.name','employee.lastName','employee.phoneNumber',
-                                    'employee.address','employee.salary','employee.userName',
-                                    'boss.name as boss','company.name as company')
-                            ->get();
+                        ->join('company','employee.idCompany','=','company.id')
+                        ->select('employee.name','employee.lastName','employee.phoneNumber',
+                                'employee.address','employee.salary','employee.userName',
+                                'boss.name as boss','company.name as company')
+                        ->get();
         
         if(!empty($employee)){
            $json = array(
@@ -126,28 +126,27 @@ class EmployeesController extends Controller{
         $json = array();
 
         foreach($boss as $value){
-        //base64_encode is for encrypt the params
-        if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
-            $data = array(
-                "name" => $request->input("name"),
-                "lastName" => $request->input("lastName"),
-                "address" => $request->input("address"),
-                "phoneNumber" => $request->input("phoneNumber"),
-                "userName" => $request->input("userName"),
-                "password" => $request->input("password")
-            );
+            //base64_encode is for encrypt the params
+            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+                $data = array(
+                    "name" => $request->input("name"),
+                    "lastName" => $request->input("lastName"),
+                    "address" => $request->input("address"),
+                    "phoneNumber" => $request->input("phoneNumber"),
+                    "userName" => $request->input("userName"),
+                    "password" => $request->input("password")
+                );
 
-            //Update the employee by id.
-            $employee = Employee::where("id",$id)->update($data);
+                //Update the employee by id.
+                $employee = Employee::where("id",$id)->update($data);
 
-            $json = array(
-                "status" => 200,
-                "detail" => "Successfully updated employee."
-            );
+                $json = array(
+                    "status" => 200,
+                    "detail" => "Successfully updated employee."
+                );
+            }
+            return json_encode($json, true);
         }
-        return json_encode($json, true);
-        }
-
     }
 
     public function destroy(Request $request, $id){
@@ -167,7 +166,7 @@ class EmployeesController extends Controller{
                 );
 
             }   
-        return json_encode($json, true);
+            return json_encode($json, true);
         }
     }
 }

@@ -12,7 +12,8 @@ class CompanyController extends Controller
 {
     public function index(){
         $company = Company::join('boss','company.idBoss','=','boss.id')
-                ->select('company.name','company.address','boss.name as boss')
+                ->select('company.name','company.address','company.idState as state','boss.name as boss')
+                ->where('company.idState','=',1)
                 ->get();
         $json = array(
             "status" => 200,
@@ -52,6 +53,8 @@ class CompanyController extends Controller
                         $company->name = $data["name"];
                         $company->address = $data["address"];
                         $company->idBoss = $value["id"];
+                        //active state = 1
+                        $company->idState = 1;
                         $company->save();
             
                         $json = array(
@@ -139,20 +142,22 @@ class CompanyController extends Controller
             if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
                 $getcompany = Company::where("id",$id)->get();
                 if($value["id"] == $getcompany[0]["idBoss"]){
-                    $company = Company::where('id', $id);
-                    $company->delete();
+                    $data = array(
+                        "idState" => 2
+                    );
+                    $company = Company::where('id', $id)->update($data);
 
                     $json = array(
                         "status" => 200,
                         "detail" => "The company was deleted"
                     );
-                }
-            }else{
-                $json = array(
-                    "status" => 404,
-                    "detail" => "sorry, you are not authorized to delete this company"
-                );
-            } 
+                }else{
+                    $json = array(
+                        "status" => 404,
+                        "detail" => "sorry, you are not authorized to delete this company"
+                    );
+                } 
+            }
         }
         
         return json_encode($json, true);
