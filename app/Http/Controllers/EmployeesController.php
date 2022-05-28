@@ -128,6 +128,8 @@ class EmployeesController extends Controller{
         foreach($boss as $value){
             //base64_encode is for encrypt the params
             if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+                $getEmployee = Employee::where("id",$id)->get();
+                if($value["id"] == $getEmployee[0]["idBoss"]){
                 $data = array(
                     "name" => $request->input("name"),
                     "lastName" => $request->input("lastName"),
@@ -144,9 +146,15 @@ class EmployeesController extends Controller{
                     "status" => 200,
                     "detail" => "Successfully updated employee."
                 );
+                }else{
+                    $json = array(
+                        "status" => 404,
+                        "detail" => "sorry, you are not authorized to update this employee"
+                    );
+                }
             }
-            return json_encode($json, true);
         }
+        return json_encode($json, true);
     }
 
     public function destroy(Request $request, $id){
@@ -156,17 +164,24 @@ class EmployeesController extends Controller{
 
         foreach($boss as $value){
             if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
-                //Delete the employee by id.
-                $post = Employee::where('id', $id);
-                $post->delete();
-        
-                $json = array(
-                    "status" => 200,
-                    "detail" => "The employee was delete."
-                );
-
+                $getEmployee = Employee::where("id",$id)->get();
+                if($value["id"] == $getEmployee[0]["idBoss"]){
+                    //Delete the employee by id.
+                    $post = Employee::where('id', $id);
+                    $post->delete();
+            
+                    $json = array(
+                        "status" => 200,
+                        "detail" => "The employee was delete."
+                    );
+                }else{
+                    $json = array(
+                        "status" => 404,
+                        "detail" => "sorry, you are not authorized to delete this employee"
+                    );
+                }
             }   
-            return json_encode($json, true);
         }
+        return json_encode($json, true);
     }
 }
