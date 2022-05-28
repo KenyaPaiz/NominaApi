@@ -48,6 +48,7 @@ class PayrollController extends Controller
                 }
             }
         }
+        
         return json_encode($json, true);
     }
 }
