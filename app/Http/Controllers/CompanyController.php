@@ -12,9 +12,8 @@ class CompanyController extends Controller
 {
     public function index(){
         $company = Company::join('boss','company.idBoss','=','boss.id')
-                ->select('company.name','company.address','company.idState as state','boss.name as boss')
-                ->where('company.idState','=',1)
-                ->get();
+                ->select('company.name','company.address','company.idStatus as statu','boss.name as boss')
+                ->where('company.idStatus','=',1)->get();
         $json = array(
             "status" => 200,
             "detail" => $company
@@ -54,7 +53,7 @@ class CompanyController extends Controller
                         $company->address = $data["address"];
                         $company->idBoss = $value["id"];
                         //active state = 1
-                        $company->idState = 1;
+                        $company->idStatus = 1;
                         $company->save();
             
                         $json = array(
@@ -143,7 +142,7 @@ class CompanyController extends Controller
                 $getcompany = Company::where("id",$id)->get();
                 if($value["id"] == $getcompany[0]["idBoss"]){
                     $data = array(
-                        "idState" => 2
+                        "idStatus" => 2
                     );
                     $company = Company::where('id', $id)->update($data);
 

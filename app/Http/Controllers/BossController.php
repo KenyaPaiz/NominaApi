@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class BossController extends Controller
 {
     public function index(){
-        $boss = Boss::all();
+        $boss = Boss::where('idStatus','=',1)->get();
         $json = array(
             "status" => 200,
             "detail" => $boss
@@ -53,6 +53,8 @@ class BossController extends Controller
                 $boss->phoneNumber = $data["phoneNumber"];
                 $boss->userName = $data["userName"];
                 $boss->password = $data["password"];
+                //active state = 1
+                $boss->idStatus = 1;
                 $boss->save();
 
                 $json = array(
@@ -109,8 +111,11 @@ class BossController extends Controller
     }
 
     public function destroy($id){
-        $post = Boss::where('id', $id);
-        $post->delete();
+        $data = array(
+            "idStatus" => 2
+        );
+
+        $boss = Boss::where('id', $id)->update($data);
         $json = array(
             "status" => 200,
             "detail" => "The boss was deleted."
