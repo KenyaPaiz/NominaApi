@@ -16,7 +16,8 @@ class EmployeesController extends Controller{
                     ->join('company','employee.idCompany','=','company.id')
                     ->select('employee.name','employee.lastName','employee.phoneNumber',
                              'employee.address','employee.salary','employee.userName',
-                             'boss.name as boss','company.name as company')->get();
+                             'boss.name as boss','company.name as company','employee.idStatus')
+                    ->where('employee.idStatus','=',1)->get();
         $json = array(
             "status" => 200,
             "detalle" => $employee
@@ -77,6 +78,8 @@ class EmployeesController extends Controller{
                         $employee->password = $data["password"];
                         $employee->idBoss = $value["id"];
                         $employee->idCompany = $data["idCompany"];
+                         //active state = 1
+                        $employee->idStatus = 1;
                         $employee->save();
             
                         $json = array(
