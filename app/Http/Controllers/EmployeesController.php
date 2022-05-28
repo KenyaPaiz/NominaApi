@@ -16,7 +16,7 @@ class EmployeesController extends Controller{
                     ->join('company','employee.idCompany','=','company.id')
                     ->select('employee.name','employee.lastName','employee.phoneNumber',
                              'employee.address','employee.salary','employee.userName',
-                             'boss.name as boss','company.name as company','employee.idStatus')
+                             'boss.name as boss','company.name as company')
                     ->where('employee.idStatus','=',1)->get();
         $json = array(
             "status" => 200,
@@ -79,7 +79,7 @@ class EmployeesController extends Controller{
                         $employee->idBoss = $value["id"];
                         $employee->idCompany = $data["idCompany"];
                          //active state = 1
-                        $employee->idStatus = 1;
+                         $employee->idStatus = 1;
                         $employee->save();
             
                         $json = array(
@@ -167,11 +167,13 @@ class EmployeesController extends Controller{
 
         foreach($boss as $value){
             if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+                //Delete the employee by id.
                 $getEmployee = Employee::where("id",$id)->get();
                 if($value["id"] == $getEmployee[0]["idBoss"]){
-                    //Delete the employee by id.
-                    $post = Employee::where('id', $id);
-                    $post->delete();
+                    $data = array(
+                        "idStatus" => 2
+                    );
+                    $employee = Employee::where('id', $id)->update($data);
             
                     $json = array(
                         "status" => 200,
@@ -179,10 +181,11 @@ class EmployeesController extends Controller{
                     );
                 }else{
                     $json = array(
-                        "status" => 404,
-                        "detail" => "sorry, you are not authorized to delete this employee"
+                        "status" => 200,
+                        "detail" => "sorry, you are not authorized to update this employee"
                     );
                 }
+                
             }   
         }
         return json_encode($json, true);
