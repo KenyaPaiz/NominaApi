@@ -190,4 +190,37 @@ class EmployeesController extends Controller{
         }
         return json_encode($json, true);
     }
+
+    public function destroyAll(Request $request){
+        $token = $request->header('Authoritazion');
+        $boss = Boss::All();
+        $json = Array();
+
+        foreach($boss as $value){
+            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
+                $allEmployees = Employee::all();
+                if($value["id"] == $allEmployees[0]["idBoss"]){
+
+                    //idStatus = 2 is inactive employees
+                    
+                    $data = Array(
+                        "idStatus" => 2
+                    );
+                    
+                    $employee = Employee::all()->update($data);
+
+                    $json = array(
+                        "status" => 200,
+                        "detail" => "All the employee was delete."
+                    );
+                }else{
+                    $json = array(
+                        "status" => 200,
+                        "detail" => "sorry, you are not authorized to update this employee"
+                    );
+                }
+            }
+        }
+        return json_encode($json, true);
+    }
 }
