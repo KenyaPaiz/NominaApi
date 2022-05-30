@@ -191,18 +191,16 @@ class EmployeesController extends Controller{
         return json_encode($json, true);
     }
 
-    public function destroyAll(Request $request){
+    public function destroyAll(Request $request, $idBoss){
         $token = $request->header('Authoritazion');
         $boss = Boss::All();
         $json = Array();
 
         foreach($boss as $value){
             if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
-                $allEmployees = Employee::all();
-                if($value["id"] == $allEmployees[0]["idBoss"]){
-
+                $allEmployees = Employee::where("idBoss", $idBoss)->get();               
+                if($value["id"] == $allEmployees){
                     //idStatus = 2 is inactive employees
-                    
                     $data = Array(
                         "idStatus" => 2
                     );
