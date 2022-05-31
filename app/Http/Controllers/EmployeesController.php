@@ -177,7 +177,7 @@ class EmployeesController extends Controller{
             
                     $json = array(
                         "status" => 200,
-                        "detail" => "The employee was delete."
+                        "detail" => "The employee was inactive."
                     );
                 }else{
                     $json = array(
@@ -191,33 +191,22 @@ class EmployeesController extends Controller{
         return json_encode($json, true);
     }
 
-    public function destroyAll(Request $request, $idBoss){
-        $token = $request->header('Authoritazion');
-        $boss = Boss::All();
-        $json = Array();
+    public function destroyAll($idBoss){
+        $data = array(
+            "idStatus" => 2
+        );
 
-        foreach($boss as $value){
-            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
-                $allEmployees = Employee::where("idBoss", $idBoss)->get();               
-                if($value["id"] == $allEmployees){
-                    //idStatus = 2 is inactive employees
-                    $data = Array(
-                        "idStatus" => 2
-                    );
-                    
-                    $employee = Employee::all()->update($data);
-
-                    $json = array(
-                        "status" => 200,
-                        "detail" => "All the employee was delete."
-                    );
-                }else{
-                    $json = array(
-                        "status" => 200,
-                        "detail" => "sorry, you are not authorized to update this employee"
-                    );
-                }
-            }
+        $employee = Employee::where("idBoss", $idBoss)->update($data);
+        if($employee == true){
+            $json = array(
+                "status" => 200,
+                "detail" => "all employees are inactive"
+            );
+        }else{
+            $json = array(
+                "status" => 404,
+                "detail" => "error"
+            );
         }
         return json_encode($json, true);
     }

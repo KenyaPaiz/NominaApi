@@ -118,7 +118,7 @@ class BossController extends Controller
         $boss = Boss::where('id', $id)->update($data);
         $json = array(
             "status" => 200,
-            "detail" => "The boss was deleted."
+            "detail" => "The boss was inactive."
         );
 
         return json_encode($json, true);

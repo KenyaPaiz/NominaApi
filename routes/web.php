@@ -27,6 +27,7 @@ Route::resource('/company', "App\Http\Controllers\CompanyController");
 Route::resource('/employee',"App\Http\Controllers\EmployeesController");
 
 Route::get('/taxes/{idEmp}',[PayrollController::class,'calculateTaxes']);
+Route::delete('/employee/destroyAll/{id}',[EmployeesController::class, 'destroyAll']);
 
 /*
 Route::resource('/', "App\Http\Controllers\AdminController");

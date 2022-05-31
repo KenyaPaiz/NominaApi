@@ -30,7 +30,6 @@ class CompanyController extends Controller
         foreach($boss as $key => $value){
             if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
                 $data = array(
-                    "id" => $request->input("id"),
                     "name" => $request->input("name"),
                     "address" => $request->input("address")
                 );
@@ -148,12 +147,12 @@ class CompanyController extends Controller
 
                     $json = array(
                         "status" => 200,
-                        "detail" => "The company was deleted"
+                        "detail" => "The company was inactive"
                     );
                 }else{
                     $json = array(
                         "status" => 404,
-                        "detail" => "sorry, you are not authorized to delete this company"
+                        "detail" => "sorry, you are not authorized to inactive this company"
                     );
                 } 
             }
