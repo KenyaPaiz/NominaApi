@@ -24,7 +24,16 @@
                 <td>{{$element->name}}</td>
                 <td>{{$element->address}}</td>
                 <td>{{$element->idBoss}}</td>
-                <td><input type="submit" value="Delete"></td>
+                <td>
+                    <form action="{{ route("company.edits", $element->id) }}" method="GET">
+                        <button type="submit" name="edit">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ route("company.inactive", $element->id) }}" method="GET">
+                        <button type="submit" name="delete">Delete</button>
+                    </form>
+                </td>
             </tr>
     @endforeach
         </tbody>

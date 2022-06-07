@@ -43,12 +43,15 @@ Route::get('/register',[BossController::class, 'create'])->name('boss.form');
 Route::post('/store',[BossController::class, 'store'])->name('boss.register');
 Route::get('/edit/{id}',[BossController::class, 'edit'])->name('boss.edits');
 Route::put('/update/{id}',[BossController::class, 'update'])->name('boss.modify');
-Route::delete('/deactive/{id}',[BossController::class], 'destroy')->name('boss.inactive');
+Route::delete('/deactive/{id}',[BossController::class, 'destroy'])->name('boss.inactive');
 
 //Company Data
 Route::get('/companyIndex',[CompanyController::class, 'index'])->name('company.table2');
 Route::get('/registerCompany',[CompanyController::class, 'create'])->name('company.form');
 Route::post('/storeCompany',[CompanyController::class, 'store'])->name('company.save');
+Route::get('/edit/{id}',[CompanyController::class, 'update'])->name('company.edits');
+Route::put('/update/{id}',[CompanyController::class, 'update'])->name('company.modify');
+Route::delete('/deactive/{id}',[CompanyController::class, 'destroy'])->name('company.inactive');
 
 //empleoye Data
 Route::get('/employeIndex',[EmployeesController::class, 'index'])->name('employe.table3');
