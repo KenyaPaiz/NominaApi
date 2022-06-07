@@ -6,6 +6,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\BossController;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -21,39 +22,41 @@ use Illuminate\Http\Request;
 |
 */
 
+/**** ROUTES - API
 Route::resource('/admin', "App\Http\Controllers\AdminController");
 Route::resource('/boss',  "App\Http\Controllers\BossController");
 Route::resource('/company', "App\Http\Controllers\CompanyController");
 Route::resource('/employee',"App\Http\Controllers\EmployeesController");
 
 Route::get('/taxes/{idEmp}',[PayrollController::class,'calculateTaxes']);
-Route::delete('/employee/destroyAll/{id}',[EmployeesController::class, 'destroyAll']);
+Route::delete('/employee/destroyAll/{id}',[EmployeesController::class, 'destroyAll']);*/
 
-/*
-Route::resource('/', "App\Http\Controllers\AdminController");
-
-Route::controller(AdminController::class)->group(function () {
-    Route::get('/admin', 'index');
-    Route::get('/mostraradmin/{id}', 'show'); 
-    Route::post('/insertaradmin', 'store');
+/*** ROUTES - WEB */
+/*** LOGIN */
+Route::get('/', function() {
+    return view('login');
 });
+Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
 
-Route::controller(CompanyController::class)->group(function () {
-    Route::get('/company', 'index');
-    Route::get('/mostrarCompany/{id}', 'show'); 
-    Route::post('/insertarCompany', 'store');
-});
+Route::get('/boss',[BossController::class, 'index'])->name('boss.table');
+Route::get('/register',[BossController::class, 'create'])->name('boss.form');
+Route::post('/store',[BossController::class, 'store'])->name('boss.register');
+Route::get('/edit/{id}',[BossController::class, 'edit'])->name('boss.edits');
+Route::put('/update/{id}',[BossController::class, 'update'])->name('boss.modify');
+Route::delete('/deactive/{id}',[BossController::class], 'destroy')->name('boss.inactive');
 
-Route::get('/admin/{id}',[AdminController::class, 'show']);
-Route::resource('/', "App\Http\Controllers\CompanyController");
-Route::resource('/', "App\Http\Controllers\EmployerController");
+//Company Data
+Route::get('/companyIndex',[CompanyController::class, 'index'])->name('company.table2');
+Route::get('/registerCompany',[CompanyController::class, 'create'])->name('company.form');
+Route::post('/storeCompany',[CompanyController::class, 'store'])->name('company.save');
 
-Route::resource('/', "App\Http\Controllers\BossController");
-Route::get('/company',[CompanyController::class, 'index']);
-Route::post('/companyP',[CompanyController::class, 'store']);
+//empleoye Data
+Route::get('/employeIndex',[EmployeesController::class, 'index'])->name('employe.table3');
+Route::get('/registerEmploye',[EmployeesController::class, 'create'])->name('employe.register');
+Route::post('/storeEmploye',[EmployeesController::class, 'store'])->name('employe.save');
 
-Route::get('/',[EmployeesController::class, 'index']);
-Route::post('/',[EmployeesController::class, 'store']);
-Route::resource('/', "App\Http\Controllers\EmployeesController");
-*/
+
+
+
+
 

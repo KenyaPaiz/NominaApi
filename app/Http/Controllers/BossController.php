@@ -11,65 +11,37 @@ class BossController extends Controller
 {
     public function index(){
         $boss = Boss::where('idStatus','=',1)->get();
-        $json = array(
-            "status" => 200,
-            "detail" => $boss
+        
+        return view("AdminViews.AllBosses", 
+            array("boss" => $boss)
         );
+    }
 
-        echo json_encode($json, true);
+    public function create(){
+        return view("AdminViews.register");
     }
 
     public function store(Request $request){
-        $data = array(
-            "name" => $request->input("name"),
-            "lastName" => $request->input("lastName"),
-            "address" => $request->input("address"),
-            "phoneNumber" => $request->input("phoneNumber"),
-            "userName" => $request->input("userName"),
-            "password" => $request->input("password")
-        );
 
-        if(!empty($data)){
-            $validate = Validator::make($data,[
-                'name' => 'required|string|max:255',
-                'lastName' => 'required|string|max:255',
-                'address' => 'required|string|max:255',
-                'phoneNumber' => 'required|numeric',
-                'userName' => 'required|string|max:255|unique:boss',
-                'password' => 'required|string|max:255',
-            ]);
+        $boss = new Boss();
+        $boss->name = $request->post('name');
+        $boss->lastName = $request->post('lastName');
+        $boss->address = $request->post('address');
+        $boss->phoneNumber = $request->post('phoneNumber');
+        $boss->userName = $request->post('userName');
+        $boss->password = $request->post('password');
+        //active state = 1
+        $boss->idStatus = 1;
+        $boss->save();
 
-            if($validate->fails()){
-                $error = $validate->errors();
-                $json = array(
-                    "status" => 404,
-                    "detail" => $error
-                );
-            }else{
-                $boss = new Boss();
-                $boss->name = $data["name"];
-                $boss->lastName = $data["lastName"];
-                $boss->address = $data["address"];
-                $boss->phoneNumber = $data["phoneNumber"];
-                $boss->userName = $data["userName"];
-                $boss->password = $data["password"];
-                //active state = 1
-                $boss->idStatus = 1;
-                $boss->save();
+        return redirect()->route("boss.table");
+ 
+    }
 
-                $json = array(
-                    "status" => 200,
-                    "detail" => "Successfully registered Boss."
-                );
-            }
-        }else{
-            $json = array(
-                "status" => 404,
-                "detail" => "Error registering."
-            );
-        }
+    public function edit($id){
 
-        return json_encode($json, true);
+        $boss = Boss::find($id);
+        return view("AdminViews.updateBoss",array('boss' => $boss));
     }
 
     public function show($id){
@@ -90,38 +62,24 @@ class BossController extends Controller
     }
 
     public function update($id, Request $request){
-        $data = array(
-            "name" => $request->input("name"),
-            "lastName" => $request->input("lastName"),
-            "address" => $request->input("address"),
-            "phoneNumber" => $request->input("phoneNumber"),
-            "userName" => $request->input("userName"),
-            "password" => $request->input("password")
-        );
+        $boss = Boss::find($id);
+        $boss->name = $request->post('name');
+        $boss->lastName = $request->post('lastName');
+        $boss->address = $request->post('address');
+        $boss->phoneNumber = $request->post('phoneNumber');
+        $boss->userName = $request->post('userName');
+        $boss->password = $request->post('password');
+        $boss->update();
 
-        $boss = Boss::where("id",$id)->update($data);
-
-        $json = array(
-            "status" => 200,
-            "detail" => "Successfully updated boss."
-        );
-
-        return json_encode($json, true);
-
+        return redirect()->route("boss.table");
     }
 
     public function destroy($id){
-        $data = array(
-            "idStatus" => 2
-        );
+        $boss = Boss::find($id);
+        $boss->idStatus = 2;
+        $boss->update();
 
-        $boss = Boss::where('id', $id)->update($data);
-        $json = array(
-            "status" => 200,
-            "detail" => "The boss was inactive."
-        );
-
-        return json_encode($json, true);
+        return redirect()->route("boss.table");
     }
 
 }

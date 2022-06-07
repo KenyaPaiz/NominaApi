@@ -22,54 +22,23 @@ class CompanyController extends Controller
         echo json_encode($json, true);
     }
 
+    public function create(){
+        return view('AdminViews.RegisterCompany');
+    }
+
     public function store(Request $request){
         $token = $request->header('Authorization');
         $boss = Boss::all();
-        $json = array();
 
-        foreach($boss as $key => $value){
-            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
-                $data = array(
-                    "name" => $request->input("name"),
-                    "address" => $request->input("address")
-                );
-            
-                if(!empty($data)){
-                    $validate = Validator::make($data,[
-                        'name' => 'required|string|max:255',
-                        'address' => 'required|string|max:255',
-                    ]);
-            
-                    if($validate->fails()){
-                        $error = $validate->errors();
-                        $json = array(
-                            "status" => 404,
-                            "detail" => $error
-                        );
-                    }else{
-                        $company = new Company();
-                        $company->name = $data["name"];
-                        $company->address = $data["address"];
-                        $company->idBoss = $value["id"];
-                        //active state = 1
-                        $company->idStatus = 1;
-                        $company->save();
-            
-                        $json = array(
-                            "status" => 200,
-                            "detail" => "Successfully registered company"
-                        );
-                    }
-                }else{
-                    $json = array(
-                        "status" => 404,
-                        "detail" => "Error registering"
-                    );
-                }
-            }
-        }
+        $company = new Company();
+        $company->name = $request->post('name');
+        $company->address = $request->post('address');
+        //$company->idBoss = $value["id"];
+        //active state = 1
+        $company->idStatus = 1;
+        $company->save();
 
-        return json_encode($json, true);
+        return redirect()->route("company.table2");
     }
 
     public function show($id, Request $request){

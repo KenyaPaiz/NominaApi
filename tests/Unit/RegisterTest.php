@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 //use PHPUnit\Framework\TestCase;
-use App\Models\Test;
+//use App\Models\Test;
 use Tests\TestCase;
 class RegisterTest extends TestCase
 {
@@ -17,10 +17,7 @@ class RegisterTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testAll(){
-        $test = Test::all();
-        $this->assertEquals("11", count($test));
-    }
+
 
    
 }

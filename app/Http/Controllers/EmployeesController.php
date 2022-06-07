@@ -25,78 +25,31 @@ class EmployeesController extends Controller{
 
         return json_encode($json, true);
     }
-    
+
+    public function create(){
+        return view("AdminViews.RegisterEmploye");
+    }
+
     public function store(Request $request){
         $token = $request->header('Authorization');
         $boss = Boss::all();
-        $json = array();
 
-        foreach($boss as $key => $value){
-            //Make the validator so that only the admin can register.
-            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){ 
-                $data = array(
-                    "name" => $request->input("name"),
-                    "lastName" => $request->input("lastName"),
-                    "phoneNumber" => $request->input("phoneNumber"),
-                    "address" => $request->input("address"),
-                    "position" => $request->input("position"),
-                    "salary" => $request->input("salary"),
-                    "userName" => $request->input("userName"),
-                    "password" => $request->input("password"),
-                    "idCompany" => $request->input("idCompany")
-                );
+        $employee = new Employee();
+        $employee->name = $request->post('name');
+        $employee->lastName = $request->post('lastName');
+        $employee->phoneNumber = $request->post('phoneNumber');
+        $employee->address = $request->post('address');
+        $employee->position = $request->post('position');
+        $employee->salary = $request->post('salary');
+        $employee->userName = $request->post('userName');
+        $employee->password = $request->post('password');
+        //$employee->idBoss = $value["id"];
+        $employee->idCompany = $request->post('idCompany');
+        //active state = 1
+        $employee->idStatus = 1;
+        $employee->save();
             
-                if(!empty($data)){
-                    $validate = Validator::make($data,
-                    [
-                        'name' => 'required|string|max:255',
-                        'lastName' => 'required|string|max:255',
-                        'phoneNumber' => 'required|numeric',
-                        'address' => 'required|string|max:255',
-                        'position' => 'required|string|max:255',
-                        'salary' => 'required|numeric',
-                        'userName' => 'required|string|max:255',
-                        'password' => 'required|string|max:255',
-                        'idCompany' => 'required|numeric'
-                    ]); 
-            
-                    if($validate->fails()){
-                        $error = $validate->errors();
-                        $json = array(
-                            "status" => 404,
-                            "detail" => $error
-                        );
-                    }else{
-                        $employee = new Employee();
-                        $employee->name = $data["name"];
-                        $employee->lastName = $data["lastName"];
-                        $employee->phoneNumber = $data["phoneNumber"];
-                        $employee->address = $data["address"];
-                        $employee->position = $data["position"];
-                        $employee->salary = $data["salary"];
-                        $employee->userName = $data["userName"];
-                        $employee->password = $data["password"];
-                        $employee->idBoss = $value["id"];
-                        $employee->idCompany = $data["idCompany"];
-                         //active state = 1
-                         $employee->idStatus = 1;
-                        $employee->save();
-            
-                        $json = array(
-                            "status" => 200,
-                            "detail" => "Successfully registered employee"
-                        );
-                    }
-                }else{
-                    $json = array(
-                        "status" => 404,
-                        "detail" => "Error registering"
-                    );
-                }
-            }
-            
-        }
-        return json_encode($json, true);
+        return redirect()->route('employe.table3');
     }
 
     public function show($id){
