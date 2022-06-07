@@ -12,9 +12,15 @@ class loginController extends Controller
         $user = $request->post('user');
         $password = $request->post('password');
 
-        $access = Boss::select('name', 'id')->where("userName","=",$user,"and", "password","=",$password)->get();
+        $access = Boss::select('name', 'id')->where("userName","=",$user)
+        ->where("password","=",$password)->get();
+        //session(['bossSession'=> $access]);
+        foreach($access as $value){
+            session(['bossId'=> $value->id]); //get Id
+            session(['bossName' => $value->name]); //get Name
+        }
         if($access == true){
-            return array($access);
+            return redirect()->route("employe.table3");
         }
     }
 }

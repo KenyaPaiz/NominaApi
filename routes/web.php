@@ -38,12 +38,13 @@ Route::get('/', function() {
 });
 Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
 
+/** BOSS */
 Route::get('/boss',[BossController::class, 'index'])->name('boss.table');
 Route::get('/register',[BossController::class, 'create'])->name('boss.form');
 Route::post('/store',[BossController::class, 'store'])->name('boss.register');
 Route::get('/edit/{id}',[BossController::class, 'edit'])->name('boss.edits');
 Route::put('/update/{id}',[BossController::class, 'update'])->name('boss.modify');
-Route::delete('/deactive/{id}',[BossController::class], 'destroy')->name('boss.inactive');
+Route::put('/deactive/{id}',[BossController::class, 'destroy'])->name('boss.inactive');
 
 //Company Data
 Route::get('/companyIndex',[CompanyController::class, 'index'])->name('company.table2');
@@ -54,6 +55,8 @@ Route::post('/storeCompany',[CompanyController::class, 'store'])->name('company.
 Route::get('/employeIndex',[EmployeesController::class, 'index'])->name('employe.table3');
 Route::get('/registerEmploye',[EmployeesController::class, 'create'])->name('employe.register');
 Route::post('/storeEmploye',[EmployeesController::class, 'store'])->name('employe.save');
+Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('employe.edits');
+Route::put('/updateEmployee/{id}',[EmployeesController::class, 'update'])->name('employee.modify');
 
 
 

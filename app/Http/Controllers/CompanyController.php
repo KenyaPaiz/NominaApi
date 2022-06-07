@@ -33,7 +33,7 @@ class CompanyController extends Controller
         $company = new Company();
         $company->name = $request->post('name');
         $company->address = $request->post('address');
-        //$company->idBoss = $value["id"];
+        $company->idBoss = 1;
         //active state = 1
         $company->idStatus = 1;
         $company->save();
