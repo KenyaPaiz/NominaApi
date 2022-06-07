@@ -8,6 +8,7 @@
 </head>
 <body>
     <form action="{{ route('boss.access') }}" method="POST">
+        @method("GET")
         <label for="">Username:</label>
         <input type="text" name="user" placeholder="user"><br>
         <label for="">Password:</label>
