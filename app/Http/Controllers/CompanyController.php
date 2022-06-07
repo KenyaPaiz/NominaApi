@@ -41,6 +41,11 @@ class CompanyController extends Controller
         return redirect()->route("company.table2");
     }
 
+    public function edit($id){
+        $company = Company::find($id);
+        return view("AdminViews.updateCompany",array('company' => $company));
+    }
+
     public function show($id, Request $request){
         $token = $request->header('Authorization');
         $boss = Boss::all();
