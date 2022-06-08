@@ -35,7 +35,7 @@ Route::delete('/employee/destroyAll/{id}',[EmployeesController::class, 'destroyA
 // ROUTES - WEB
 // LOGIN
 Route::get('/', function() {
-    return view('login');
+    return view('plantilla');
 });
 Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
 
