@@ -27,12 +27,12 @@ class EmployeesController extends Controller{
         $id_boss = session('bossId');
         $employee = Employee::where("idStatus","=",1)->where("idBoss","=",$id_boss)->get();
 
-        return view("AdminViews.AllEmployee", array("employee" => $employee));
+        return view("BossViews.AllEmployee", array("employee" => $employee));
 
     }
 
     public function create(){
-        return view("AdminViews.RegisterEmploye");
+        return view("BossViews.RegisterEmploye");
     }
 
     public function store(Request $request){
@@ -79,7 +79,7 @@ class EmployeesController extends Controller{
 
     public function edit($id){
         $employee = Employee::find($id);
-        return view("AdminViews.updateEmployee", array("employee" => $employee));
+        return view("BossViews.updateEmployee", array("employee" => $employee));
     }
 
     public function update(Request $request, $id){

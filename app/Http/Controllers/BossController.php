@@ -18,7 +18,7 @@ class BossController extends Controller
     }
 
     public function create(){
-        return view("AdminViews.register");
+        return view("BossViews.register");
     }
 
     public function store(Request $request){

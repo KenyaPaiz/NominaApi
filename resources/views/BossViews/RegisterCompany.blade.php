@@ -1,3 +1,6 @@
+@php
+    session();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/register_company.css">
     <script src="{{ url('/') }}/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <!--Tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -42,17 +49,14 @@
                         <h6>Addrees</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="addrees" placeholder="State, city, street...">
+                        <input class="input-contenedor" type="text" name="address" placeholder="State, city, street...">
                     </div>   
                 </div>
                 <br>
+                <div class="button-box">
+                    <input type="submit" name="register" value="Register" class="btn btn-success">
+                </div>
             </form>
-        </div>
-        <div>
-            <i class="fa-thin fa-user" class="icon"></i>
-        </div>
-        <div class="button-box">
-            <input type="button" name="register" value="Register" class="btn btn-success">
         </div>
     </section>
     

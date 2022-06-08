@@ -9,6 +9,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/register_employee.css">
     <script src="{{ url('/') }}/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <!--Tipografia-->
+    <<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -16,7 +20,6 @@
             <a href="#">About us</a>
         </nav>
     </header>
-   
     <section class="section-flex">
         <div class="form_container">
             <form action="{{ route('employe.save') }}" method="POST">
@@ -41,7 +44,7 @@
                         <h6>Last Name</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="lastname" placeholder="Last Name">
+                        <input class="input-contenedor" type="text" name="lastName" placeholder="Last Name">
                     </div>    
                 </div>
                 <br>
@@ -51,7 +54,7 @@
                         <h6>Addrees</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="addrees" placeholder="State, city, street...">
+                        <input class="input-contenedor" type="text" name="address" placeholder="State, city, street...">
                     </div>   
                 </div>
                 <br>
@@ -61,7 +64,7 @@
                         <h6>Posotion</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="Position" placeholder="Position">
+                        <input class="input-contenedor" type="text" name="position" placeholder="Position">
                     </div>   
                 </div>
                 <br>
@@ -71,7 +74,7 @@
                         <h6>Salary</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="Salary" placeholder="$0.00">
+                        <input class="input-contenedor" type="number" name="salary" placeholder="$0.00">
                     </div>   
                 </div>
                 <br>
@@ -81,7 +84,7 @@
                         <h6>Phone Number</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="Text" name="phoneNumber" placeholder="(+000)000-0000">
+                        <input class="input-contenedor" type="number" name="phoneNumber" placeholder="(+000)000-0000">
                     </div>    
                 </div>
                 <br>
@@ -91,7 +94,7 @@
                         <h6>Username</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="username" placeholder="Username">
+                        <input class="input-contenedor" type="text" name="userName" placeholder="Username">
                     </div>    
                 </div>
                 <br>
@@ -114,28 +117,18 @@
                         <input class="input-contenedor" type="password" name="ConPassword" placeholder="Password">
                     </div>   
                 </div>
-                <br>
-
+                <br><br>
                 <div class="container">
-                    <div class="boxtitle">
-                        <h6>Company</h6>
+                    <div class="button-box">
+                        <input type="submit" name="register" value="Register" class="btn btn-success">
                     </div>
-                    <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="company" placeholder="Company">
-                    </div>   
                 </div>
-                <br>
-
             </form>
         </div>
         <div>
             <i class="fa-thin fa-user" class="icon"></i>
         </div>
-        <div class="button-box">
-            <input type="button" name="register" value="Register" class="btn btn-success">
-        </div>
     </section>
-    
 </body>
 </html>
 
