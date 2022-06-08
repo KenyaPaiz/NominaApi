@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('/') }}/css/sidebar.css">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
 </head>
 
@@ -29,9 +29,9 @@
                             class="fa-solid fa-building"></i> Register Company</a></li>
                 <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i
                             class="fa-solid fa-users"></i> Register Employee</a></li>
-                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
+                <li class=""><a href="{{ route('employe.table3') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
                         Show Employee</a></li>
-                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
+                <li class=""><a href="{{ route('company.table2') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
                         Show Company</a></li>
             </ul>
             <hr class="h-color mx-2">
