@@ -7,11 +7,13 @@
     <title>Register Employe</title>
 </head>
 <body>
-<form action="{{ route('boss.register') }}" method="POST">
+<form action="{{ route('employe.save') }}" method="POST">
         @csrf
         <input type="text" name="name" >
         <input type="text" name="lastName" >
         <input type="text" name="address" >
+        <input type="number" name="salary" >
+        <input type="text" name="position" >
         <input type="number" name="phoneNumber" >
         <input type="text" name="userName" >
         <input type="text" name="password" >

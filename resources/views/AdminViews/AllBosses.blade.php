@@ -33,7 +33,9 @@
                     </form>
                 </td>
                 <td>
-                    <form action="{{ route("boss.inactive", $element->id) }}" method="GET">
+                    <form action="{{ route("boss.inactive", $element->id) }}" method="POST">
+                        @method("PUT")
+                        @csrf
                         <button type="submit" name="delete">Delete</button>
                     </form>
                 </td>

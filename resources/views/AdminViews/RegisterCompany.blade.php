@@ -7,7 +7,7 @@
     <title>Company Register</title>
 </head>
 <body>
-<form action="{{ route('copmany.register') }}" method="POST">
+<form action="{{ route('company.save') }}" method="POST">
         @csrf
         <input type="text" name="name" >
         <input type="text" name="address" >

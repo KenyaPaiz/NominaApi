@@ -23,7 +23,7 @@
                 <td>{{$element->id}}</td>
                 <td>{{$element->name}}</td>
                 <td>{{$element->address}}</td>
-                <td>{{$element->idBoss}}</td>
+                <td>{{$element->boss}}</td>
                 <td>
                     <form action="{{ route("company.edits", $element->id) }}" method="GET">
                         <button type="submit" name="edit">Edit</button>

@@ -44,23 +44,6 @@ class BossController extends Controller
         return view("AdminViews.updateBoss",array('boss' => $boss));
     }
 
-    public function show($id){
-        $boss = Boss::where("id",$id)->get();
-        if(!empty($boss)){
-           $json = array(
-                "status" => 200,
-                "detail" => $boss
-           );
-        }else{
-            $json = array(
-                "status" => 200,
-                "detail" => "Error getting boss."
-           );
-        }
-
-        return json_encode($json, true);
-    }
-
     public function update($id, Request $request){
         $boss = Boss::find($id);
         $boss->name = $request->post('name');

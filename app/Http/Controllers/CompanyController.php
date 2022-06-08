@@ -12,7 +12,7 @@ class CompanyController extends Controller
 {
     public function index(){
         $company = Company::join('boss','company.idBoss','=','boss.id')
-                ->select('company.name','company.address','company.idStatus as statu','boss.name as boss')
+                ->select('company.id as id','company.name as name','company.address as address','boss.name as boss')
                 ->where('company.idStatus','=',1)->get();
 
         return view("AdminViews.AllCompanies",
@@ -30,7 +30,7 @@ class CompanyController extends Controller
         $company = new Company();
         $company->name = $request->post('name');
         $company->address = $request->post('address');
-        //$company->idBoss = $value["id"];
+        $company->idBoss = 1;
         //active state = 1
         $company->idStatus = 1;
         $company->save();

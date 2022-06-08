@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\BossController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -38,26 +39,32 @@ Route::get('/', function() {
 });
 Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
 
+/** BOSS */
 Route::get('/boss',[BossController::class, 'index'])->name('boss.table');
 Route::get('/register',[BossController::class, 'create'])->name('boss.form');
 Route::post('/store',[BossController::class, 'store'])->name('boss.register');
 Route::get('/edit/{id}',[BossController::class, 'edit'])->name('boss.edits');
 Route::put('/update/{id}',[BossController::class, 'update'])->name('boss.modify');
-Route::delete('/deactive/{id}',[BossController::class, 'destroy'])->name('boss.inactive');
+Route::put('/deactive/{id}',[BossController::class, 'destroy'])->name('boss.inactive');
 
 //Company Data
 Route::get('/companyIndex',[CompanyController::class, 'index'])->name('company.table2');
 Route::get('/registerCompany',[CompanyController::class, 'create'])->name('company.form');
 Route::post('/storeCompany',[CompanyController::class, 'store'])->name('company.save');
-Route::get('/edit/{id}',[CompanyController::class, 'update'])->name('company.edits');
-Route::put('/update/{id}',[CompanyController::class, 'update'])->name('company.modify');
+Route::get('/editCompany/{id}',[CompanyController::class, 'edit'])->name('company.edits');
+Route::put('/updateCompany/{id}',[CompanyController::class, 'update'])->name('company.modify');
 Route::delete('/deactive/{id}',[CompanyController::class, 'destroy'])->name('company.inactive');
 
 //empleoye Data
 Route::get('/employeIndex',[EmployeesController::class, 'index'])->name('employe.table3');
 Route::get('/registerEmploye',[EmployeesController::class, 'create'])->name('employe.register');
 Route::post('/storeEmploye',[EmployeesController::class, 'store'])->name('employe.save');
+Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('employe.edits');
+Route::put('/updateEmployee/{id}',[EmployeesController::class, 'update'])->name('employee.modify');
+Route::put('/deactive/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
 
+/** PDF */
+Route::get('/generatePDF',[PDFController::class, 'generatePDF'])->name('pdf');
 
 
 
