@@ -96,35 +96,12 @@ class EmployeesController extends Controller{
         return redirect()->route("employe.table3");
     }
 
-    public function destroy(Request $request, $id){
-        $token = $request->header('Authorization');
-        $boss = Boss::all();
-        $json = array();
+    public function destroy($id){
+        $boss = Employee::find($id);
+        $boss->idStatus = 2;
+        $boss->update();
 
-        foreach($boss as $value){
-            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
-                //Delete the employee by id.
-                $getEmployee = Employee::where("id",$id)->get();
-                if($value["id"] == $getEmployee[0]["idBoss"]){
-                    $data = array(
-                        "idStatus" => 2
-                    );
-                    $employee = Employee::where('id', $id)->update($data);
-            
-                    $json = array(
-                        "status" => 200,
-                        "detail" => "The employee was inactive."
-                    );
-                }else{
-                    $json = array(
-                        "status" => 200,
-                        "detail" => "sorry, you are not authorized to update this employee"
-                    );
-                }
-                
-            }   
-        }
-        return json_encode($json, true);
+        return redirect()->route("employe.table3");
     }
 
     public function destroyAll($idBoss){

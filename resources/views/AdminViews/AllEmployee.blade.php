@@ -42,7 +42,13 @@
                             <button type="submit" name="editEmployee">Edit</button>
                         </form>
                     </td>
-                    <td><button type="submit" name="deleteEmployee">Delete</button></td>
+                    <td>
+                        <form action="{{ route("employee.inactive", $item->id) }}" method="POST">
+                            @method("PUT")
+                            @csrf
+                            <button type="submit" name="deleteEmployee">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

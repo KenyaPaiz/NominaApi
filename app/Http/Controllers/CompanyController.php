@@ -12,14 +12,10 @@ class CompanyController extends Controller
 {
     public function index(){
         $company = Company::join('boss','company.idBoss','=','boss.id')
-                ->select('company.name','company.address','company.idStatus as statu','boss.name as boss')
+                ->select('company.id as id','company.name as name','company.address as address','boss.name as boss')
                 ->where('company.idStatus','=',1)->get();
-        $json = array(
-            "status" => 200,
-            "detail" => $company
-        );
-
-        echo json_encode($json, true);
+        
+        return view("AdminViews.AllCompanies", array("company" => $company));
     }
 
     public function create(){

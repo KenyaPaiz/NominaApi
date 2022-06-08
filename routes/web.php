@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\BossController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -50,8 +51,8 @@ Route::put('/deactive/{id}',[BossController::class, 'destroy'])->name('boss.inac
 Route::get('/companyIndex',[CompanyController::class, 'index'])->name('company.table2');
 Route::get('/registerCompany',[CompanyController::class, 'create'])->name('company.form');
 Route::post('/storeCompany',[CompanyController::class, 'store'])->name('company.save');
-Route::get('/edit/{id}',[CompanyController::class, 'update'])->name('company.edits');
-Route::put('/update/{id}',[CompanyController::class, 'update'])->name('company.modify');
+Route::get('/editCompany/{id}',[CompanyController::class, 'edit'])->name('company.edits');
+Route::put('/updateCompany/{id}',[CompanyController::class, 'update'])->name('company.modify');
 Route::delete('/deactive/{id}',[CompanyController::class, 'destroy'])->name('company.inactive');
 
 //empleoye Data
@@ -60,7 +61,7 @@ Route::get('/registerEmploye',[EmployeesController::class, 'create'])->name('emp
 Route::post('/storeEmploye',[EmployeesController::class, 'store'])->name('employe.save');
 Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('employe.edits');
 Route::put('/updateEmployee/{id}',[EmployeesController::class, 'update'])->name('employee.modify');
-
+Route::put('/deactive/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
 
 
 
