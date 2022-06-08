@@ -1,5 +1,6 @@
 body {
     background-color: #eee;
+    font-family: 'Poppins', sans-serif;
 }
 .img-perfil {
     background-image: url('../img/profile.jpg');
