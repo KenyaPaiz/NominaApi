@@ -24,7 +24,6 @@ class CompanyController extends Controller
     }
 
     public function store(Request $request){
-        $token = $request->header('Authorization');
         $boss = Boss::all();
 
         $company = new Company();
@@ -44,12 +43,10 @@ class CompanyController extends Controller
     }
 
     public function show($id, Request $request){
-        $token = $request->header('Authorization');
         $boss = Boss::all();
         $json = array();
 
         foreach($boss as $key => $value){
-            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
                 $company = Company::where('company.id',$id)->join('boss','company.idBoss','=','boss.id')
                             ->select('company.name','company.address','company.idBoss as idBoss','boss.name as boss')
                             ->get();
@@ -64,7 +61,6 @@ class CompanyController extends Controller
                         "detail" => "sorry, you are not authorized to view this company"
                     );
                 }
-            }
         }
         
         return json_encode($json, true);
@@ -76,7 +72,6 @@ class CompanyController extends Controller
         $json = array();
 
         foreach($boss as $key => $value){
-            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
                 $getcompany = Company::where("id",$id)->get();
                 if($value["id"] == $getcompany[0]["idBoss"]){
                     $data = array(
@@ -86,7 +81,6 @@ class CompanyController extends Controller
                     $company = Company::where("id",$id)->update($data);
                 }
             }
-        }
         
         return view('company.table2');
     }
@@ -97,7 +91,6 @@ class CompanyController extends Controller
         $json = array();
 
         foreach($boss as $key => $value){
-            if("Basic ".base64_encode($value["userName"].":".$value["password"])==$token){
                 $getcompany = Company::where("id",$id)->get();
                 if($value["id"] == $getcompany[0]["idBoss"]){
                     $data = array(
@@ -105,7 +98,6 @@ class CompanyController extends Controller
                     );
                     $company = Company::where('id', $id)->update($data);
                 }
-            }
         }
     return redirect()->route("company.table2");
     }
