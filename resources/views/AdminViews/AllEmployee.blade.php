@@ -54,5 +54,7 @@
         </tbody>
     </table>
     <a href="{{ route('employe.register') }}">Register Employee</a>
+
+    <a href="{{ route('pdf') }}">PDF</a>
 </body>
 </html>

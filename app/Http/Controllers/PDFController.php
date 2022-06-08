@@ -13,7 +13,8 @@ class PDFController extends Controller
         $data = ["employee" => $employees];
         $pdf = PDF::loadView('pdfEmploy', $data);
         
-        return $pdf->download('employee.pdf');
+        //return $pdf->download('employee.pdf');
+        return $pdf->stream();
     }
     
 }
