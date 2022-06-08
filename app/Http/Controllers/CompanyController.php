@@ -14,12 +14,9 @@ class CompanyController extends Controller
         $company = Company::join('boss','company.idBoss','=','boss.id')
                 ->select('company.name','company.address','company.idStatus as statu','boss.name as boss')
                 ->where('company.idStatus','=',1)->get();
-        $json = array(
-            "status" => 200,
-            "detail" => $company
-        );
 
-        echo json_encode($json, true);
+        return view("AdminViews.AllCompanies",
+        array("company" => $company));
     }
 
     public function create(){
@@ -85,24 +82,13 @@ class CompanyController extends Controller
                     $data = array(
                         "name" => $request->input("name"),
                         "address" => $request->input("address")
-                    );
-            
+                    );   
                     $company = Company::where("id",$id)->update($data);
-            
-                    $json = array(
-                        "status" => 200,
-                        "detail" => "Successfully updated company"
-                    );
-                }else{
-                    $json = array(
-                        "status" => 404,
-                        "detail" => "sorry, you are not authorized to update this company"
-                    );
-                } 
+                }
             }
         }
         
-        return json_encode($json, true);
+        return view('company.table2');
     }
 
     public function destroy($id, Request $request){
@@ -118,20 +104,9 @@ class CompanyController extends Controller
                         "idStatus" => 2
                     );
                     $company = Company::where('id', $id)->update($data);
-
-                    $json = array(
-                        "status" => 200,
-                        "detail" => "The company was inactive"
-                    );
-                }else{
-                    $json = array(
-                        "status" => 404,
-                        "detail" => "sorry, you are not authorized to inactive this company"
-                    );
-                } 
+                }
             }
         }
-        
-        return json_encode($json, true);
+    return redirect()->route("company.table2");
     }
 }
