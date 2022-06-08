@@ -7,12 +7,17 @@
     <title>Document</title>
 </head>
 <body>
+<div class="mx-auto">
+
     <h1>Reporte de empleados</h1>
-    <table>
+
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>LastName</th>
+                <th>Position</th>
+                <th>Salary</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +25,13 @@
                 <tr>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->lastName }}</td>
+                    <td>{{ $item->position }}</td>
+                    <td>{{ $item->salary }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+</div>
 </body>
 </html>
