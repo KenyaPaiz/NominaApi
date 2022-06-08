@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
 {
@@ -12,11 +12,8 @@ class PDFController extends Controller
         $employees = Employee::all();
         $data = ["employee" => $employees];
         $pdf = PDF::loadView('pdfEmploy', $data);
-       
+        
+        return $pdf->download('employee.pdf');
     }
-    /*public function PDFTest(){
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
-    }*/
+    
 }

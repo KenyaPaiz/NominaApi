@@ -63,6 +63,9 @@ Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('emp
 Route::put('/updateEmployee/{id}',[EmployeesController::class, 'update'])->name('employee.modify');
 Route::put('/deactive/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
 
+/** PDF */
+Route::get('/generatePDF',[PDFController::class, 'generatePDF']);
+
 
 
 
