@@ -1,0 +1,61 @@
+
+body {
+    position: relative;
+    /* background-image: url('../img/Fondo-1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); */
+    /* background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%); */
+
+    /* background-image: url('../img/Colored\ Shapes.svg'); */
+    background-image: url('../img/Animated\ Shape3.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    height: 100vh;
+}
+
+.container{
+    position: absolute;
+    height: 100px;
+    width: 500px;
+    top: 30%;
+    left: 25%;
+}
+
+.row{
+    margin-top: 30px;
+}
+
+.buttonD {
+    border-radius: 8px;
+    background-color: #00bbf9;
+    border: none;
+    margin-top: 10px;
+}
+
+.buttonD:hover {
+    background-color: #0DC83D;
+    font-weight: bold
+}
+
+.container2 {
+    background-color: wheat;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(243, 255, 255, 0.228);
+   
+}
+
+.inputs {
+    width: 70%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.input2 {
+    margin-top: 10px;
+}

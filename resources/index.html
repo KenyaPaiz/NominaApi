@@ -1,60 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <script src="js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+
+
+
 </head>
 <body>
-    <div class="navbar-lateral full-reset">
-        <div class="visible-xs font-movile-menu mobile-menu-button"></div>
-        <div class="full-reset container-menu-movile nav-lateral-scroll">
-            <div class="logo full-reset all-tittles">
-                <i class="bi bi-book-half"></i> 
-                sistema bibliotecario
-            </div>
-            <div class="nav-lateral-divider full-reset"></div>
-            <div class="full-reset" style="padding: 10px 0; color:#fff;">
-                <figure>
-                    <img src="img/logo.png" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
-                </figure>
-                <p class="text-center" style="padding-top: 15px;">Sistema Bibliotecario</p>
-            </div>
-            <div class="nav-lateral-divider full-reset"></div>
-            <!-- menu -->
-            <div class="full-reset nav-lateral-list-menu">
-                <ul class="list-unstyled">
-                    <li><a href="home.html"><i class="bi bi-house-fill"></i>&nbsp;&nbsp; Inicio</a></li>
-                </ul>
+    <section class="login py-5 bg-light">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-lg-5">
+                    <img src="./img/tech.jpg" class="img-fluid">
+
+                </div>
+                <div class="col-lg-7 text-center py-5 my-5">
+                    <h1 class="animate__animated animate__fadeInDown">LOGIN</h1>
+
+                    <form action="">
+                        <div class="form-row  pt-5">
+                            <div class="offset-1 col-lg-10">
+                                <input type="text" class="inp px-3 animate__animated animate__fadeInDown" placeholder="User name...">
+                            </div>
+                        </div>
+                        <div class="form-row pt-3">
+                            <div class="offset-1 col-lg-10">
+                                <input type="password" class="inp px-3 animate__animated animate__fadeInDown" placeholder="Password...">
+                            </div>
+                        </div>
+                        <div class="form-row pt-4 pb-3">
+                            <div class="offset-1 col-lg-10">
+                               <button class="btn1 animate__animated animate__fadeInDown">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="animate__animated animate__fadeInDown">
+                        You do not have an account? <a href="#">Sign up</a>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="content-page-container full-reset custom-scroll-containers">
-        <nav class="navbar-user-top full-reset">
-            <ul class="list-unstyled full-reset">
-                <figure>
-                   <img src="img/user01.png" alt="user-picture" class="img-responsive img-circle center-box">
-                </figure>
-                <li style="color:#fff; cursor:default;">
-                    <span class="all-tittles">Admin Name</span>
-                </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="bi bi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="bi bi-search"></i>
-                </li>
-                <li class="mobile-menu-button visible-xs" style="float: left !important;">
-                    <i class="bi bi-arrow-left-right"></i>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    </section>
 </body>
-<script src="js/bootstrap.min.js"></script>
 </html>
