@@ -15,12 +15,12 @@ class CompanyController extends Controller
                 ->select('company.id as id','company.name as name','company.address as address','boss.name as boss')
                 ->where('company.idStatus','=',1)->get();
 
-        return view("AdminViews.AllCompanies",
+        return view("BossViews.AllCompanies",
         array("company" => $company));
     }
 
     public function create(){
-        return view('AdminViews.RegisterCompany');
+        return view('BossViews.RegisterCompany');
     }
 
     public function store(Request $request){
@@ -29,7 +29,7 @@ class CompanyController extends Controller
         $company = new Company();
         $company->name = $request->post('name');
         $company->address = $request->post('address');
-        $company->idBoss = 1;
+        $company->idBoss = session('bossId');
         //active state = 1
         $company->idStatus = 1;
         $company->save();
@@ -39,7 +39,7 @@ class CompanyController extends Controller
 
     public function edit($id){
         $company = Company::find($id);
-        return view("AdminViews.updateCompany",array('company' => $company));
+        return view("BossViews.updateCompany",array('company' => $company));
     }
 
     public function show($id, Request $request){

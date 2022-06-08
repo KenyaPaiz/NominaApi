@@ -32,14 +32,14 @@ Route::resource('/employee',"App\Http\Controllers\EmployeesController");
 Route::get('/taxes/{idEmp}',[PayrollController::class,'calculateTaxes']);
 Route::delete('/employee/destroyAll/{id}',[EmployeesController::class, 'destroyAll']);*/
 
-/*** ROUTES - WEB */
-/*** LOGIN */
+// ROUTES - WEB
+// LOGIN
 Route::get('/', function() {
     return view('login');
 });
 Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
 
-/** BOSS */
+// BOSS
 Route::get('/boss',[BossController::class, 'index'])->name('boss.table');
 Route::get('/register',[BossController::class, 'create'])->name('boss.form');
 Route::post('/store',[BossController::class, 'store'])->name('boss.register');
@@ -63,7 +63,7 @@ Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('emp
 Route::put('/updateEmployee/{id}',[EmployeesController::class, 'update'])->name('employee.modify');
 Route::put('/deactiveCompany/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
 
-/** PDF */
+// PDF
 Route::get('/generatePDF',[PDFController::class, 'generatePDF'])->name('pdf');
 
 
