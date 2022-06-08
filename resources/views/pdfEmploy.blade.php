@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>EMPLOYEE REPORT</title>
+    @require('view.resources');
 </head>
 <body>
 <div class="mx-auto">
 
-    <h1>Reporte de empleados</h1>
+    <h1>EMPLOYEE REPORT</h1>
 
     <table class="table table-dark">
         <thead>
