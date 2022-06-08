@@ -2,23 +2,140 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register Employe</title>
+    <title>Employee Register</title>
+    <link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/register_employee.css">
+    <script src="{{ url('/') }}/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 <body>
-<form action="{{ route('employe.save') }}" method="POST">
-        @csrf
-        <input type="text" name="name" >
-        <input type="text" name="lastName" >
-        <input type="text" name="address" >
-        <input type="number" name="salary" >
-        <input type="text" name="position" >
-        <input type="number" name="phoneNumber" >
-        <input type="text" name="userName" >
-        <input type="text" name="password" >
+    <header>
+        <nav>
+            <a href="#">About us</a>
+        </nav>
+    </header>
+   
+    <section class="section-flex">
+        <div class="form_container">
+            <form action="{{ route('employe.save') }}" method="POST">
+                @csrf
+                <i class="fa-solid fa-user icono" class="icon"></i>
 
-        <input type="submit" name="submit" >
-    </form>
+                <div class="TitleBoss">
+                    <h1 class="Title1">Register Employee</h1>
+                </div>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Name</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="text" name="name" placeholder="Name">
+                    </div>    
+                </div>
+                <br>
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Last Name</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="text" name="lastname" placeholder="Last Name">
+                    </div>    
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Addrees</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="text" name="addrees" placeholder="State, city, street...">
+                    </div>   
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Posotion</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="text" name="Position" placeholder="Position">
+                    </div>   
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Salary</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="text" name="Salary" placeholder="$0.00">
+                    </div>   
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Phone Number</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="Text" name="phoneNumber" placeholder="(+000)000-0000">
+                    </div>    
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Username</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="text" name="username" placeholder="Username">
+                    </div>    
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Password</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="password" name="password" placeholder="Password">
+                    </div>    
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Confirm Password</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="password" name="ConPassword" placeholder="Password">
+                    </div>   
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Company</h6>
+                    </div>
+                    <div class="cont-input">
+                        <input class="input-contenedor" type="text" name="company" placeholder="Company">
+                    </div>   
+                </div>
+                <br>
+
+            </form>
+        </div>
+        <div>
+            <i class="fa-thin fa-user" class="icon"></i>
+        </div>
+        <div class="button-box">
+            <input type="button" name="register" value="Register" class="btn btn-success">
+        </div>
+    </section>
+    
 </body>
 </html>
+

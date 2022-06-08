@@ -53,7 +53,7 @@ Route::get('/registerCompany',[CompanyController::class, 'create'])->name('compa
 Route::post('/storeCompany',[CompanyController::class, 'store'])->name('company.save');
 Route::get('/editCompany/{id}',[CompanyController::class, 'edit'])->name('company.edits');
 Route::put('/updateCompany/{id}',[CompanyController::class, 'update'])->name('company.modify');
-Route::delete('/deactive/{id}',[CompanyController::class, 'destroy'])->name('company.inactive');
+Route::delete('/deactiveCompany/{id}',[CompanyController::class, 'destroy'])->name('company.inactive');
 
 //empleoye Data
 Route::get('/employeIndex',[EmployeesController::class, 'index'])->name('employe.table3');
@@ -61,7 +61,7 @@ Route::get('/registerEmploye',[EmployeesController::class, 'create'])->name('emp
 Route::post('/storeEmploye',[EmployeesController::class, 'store'])->name('employe.save');
 Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('employe.edits');
 Route::put('/updateEmployee/{id}',[EmployeesController::class, 'update'])->name('employee.modify');
-Route::put('/deactive/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
+Route::put('/deactiveCompany/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
 
 /** PDF */
 Route::get('/generatePDF',[PDFController::class, 'generatePDF'])->name('pdf');
