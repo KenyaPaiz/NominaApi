@@ -1,14 +1,9 @@
 @php
     session();
 @endphp
-@extends('resources')
-<body>
-    <header>
-        <nav>
-            <a href="#">About us</a>
-        </nav>
-    </header>
-   
+@extends('plantilla')
+
+@section('content')
     <section class="section-flex">
         <div class="form_container">
             <form action="{{ route('company.save') }}" method="POST">
@@ -44,7 +39,4 @@
             </form>
         </div>
     </section>
-    
-</body>
-</html>
-
+@endsection

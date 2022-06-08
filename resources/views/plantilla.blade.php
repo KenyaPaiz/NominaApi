@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('/')}}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('/')}}/css/main.css">
     <link rel="stylesheet" href="{{ url('/') }}/css/sidebar.css">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/boss_register.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/register_company.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/register_employee.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="{{ url('/') }}/js/bootstrap.min.js"></script>
 </head>
-
 <body>
     <div class="main-container d-flex">
         <div class="sidebar" id="side_nav">
@@ -70,25 +75,26 @@
                     </div>
                 </div>
             </nav>
+            <div class="container">
+                @yield('content')
+            </div>
         </div>
     </div>
+</body>
+<script src="https://kit.fontawesome.com/0ef283508d.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(".sidebar ul li").on('click', function () {
+        $(".sidebar ul li.active").removeClass('active');
+        $(this).addClass('active');
+    });
 
-    <script src="https://kit.fontawesome.com/0ef283508d.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(".sidebar ul li").on('click', function () {
-            $(".sidebar ul li.active").removeClass('active');
-            $(this).addClass('active');
+    $('.open-btn').on('click', function(){
+            $('.sidebar').addClass('active');
         });
 
-        $('.open-btn').on('click', function(){
-                $('.sidebar').addClass('active');
-            });
-
-            $('.close-btn').on('click', function(){
-                $('.sidebar').removeClass('active');
-            });
-    </script>
-</body>
-
+        $('.close-btn').on('click', function(){
+            $('.sidebar').removeClass('active');
+        });
+</script>
 </html>
