@@ -48,6 +48,7 @@ class EmployeesController extends Controller{
         $employee->idBoss = session('bossId');
         //active state = 1
         $employee->idStatus = 1;
+        $employee->idRol = 3;
         $employee->save();
             
         return redirect()->route('employe.table3');

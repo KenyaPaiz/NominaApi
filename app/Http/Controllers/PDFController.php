@@ -11,7 +11,7 @@ class PDFController extends Controller
     public function generatePDF(){
         $employees = Employee::all();
         $data = ["employee" => $employees];
-        $pdf = PDF::loadView('pdfEmploy', $data);
+        $pdf = PDF::loadView('pdfEmploy', $data)->setOptions(['defaultFont' => 'sans-serif']);;
         
         //return $pdf->download('employee.pdf');
         return $pdf->stream();

@@ -32,6 +32,7 @@ class BossController extends Controller
         $boss->password = $request->post('password');
         //active state = 1
         $boss->idStatus = 1;
+        $boss->idRol = 2;
         $boss->save();
 
         return redirect()->route("boss.table");

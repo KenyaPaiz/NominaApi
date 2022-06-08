@@ -35,11 +35,12 @@ Route::delete('/employee/destroyAll/{id}',[EmployeesController::class, 'destroyA
 // ROUTES - WEB
 // LOGIN
 Route::get('/', function() {
-    return view('plantilla');
+    return view('login');
 });
-Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
+//Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
+Route::get('/access',[loginController::class, 'access'])->name('boss.access');
 
-// BOSS
+// BOSS Data
 Route::get('/boss',[BossController::class, 'index'])->name('boss.table');
 Route::get('/register',[BossController::class, 'create'])->name('boss.form');
 Route::post('/store',[BossController::class, 'store'])->name('boss.register');
