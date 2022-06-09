@@ -9,13 +9,12 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>LastName</th>
                 <th>Address</th>
                 <th>CellPhone</th>
-                <th></th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -29,11 +28,6 @@
                 <td>{{$element->lastName}}</td>
                 <td>{{$element->address}}</td>
                 <td>{{$element->phoneNumber}}</td>
-                <td>
-                    <form action="{{ route("boss.edits", $element->id) }}" method="GET">
-                        <button type="submit" name="edit">Edit</button>
-                    </form>
-                </td>
                 <td>
                     <form action="{{ route("boss.inactive", $element->id) }}" method="POST">
                         @method("PUT")

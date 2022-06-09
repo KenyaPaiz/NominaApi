@@ -13,9 +13,7 @@ class EmployeesController extends Controller{
     public function index(){
         $id_boss = session('bossId');
         $employee = Employee::where("idStatus","=",1)->where("idBoss","=",$id_boss)->get();
-
         return view("BossViews.AllEmployee", array("employee" => $employee));
-
     }
 
     public function getTemplate(){

@@ -34,9 +34,11 @@
                     <input type="text" name="address" value="{{$company->address}}"> 
                 </div>    
             </div>
+            <br>
             <!-- Button -->
+            <div class="button-box">
                 <input type="submit" name="submit" >
-
+            </div>
         </form>
     </div>
 </section>

@@ -13,11 +13,6 @@ class loginController extends Controller
 {
 
     public function access(Request $request){
-        $request->validate([
-            'user' => 'required',
-            'password' => 'required'
-        ]);
-
         $user = $request->post('user');
         $password = $request->post('password');
         $accesAdmin = Admin::where("userName","=",$user)->where("password","=",$password)->get();

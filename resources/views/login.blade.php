@@ -8,8 +8,8 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url('/') }}/css/main.css">
 </head>
@@ -30,7 +30,7 @@
                         <div class="form-row  pt-5">
                             <div class="offset-1 col-lg-10 control-form">
                                 <input type="text" name="user" class="inp px-3 animate__animated animate__fadeInDown"
-                                    placeholder="User name..." id="username">
+                                    placeholder="Username..." id="username">
                                 {{-- <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i> --}}
                                 <br>
@@ -51,11 +51,9 @@
                         </div>
                         <div class="form-row pt-4 pb-3">
                             <div class="offset-1 col-lg-10">
-                                <button type="submit" class="btn1 animate__animated animate__fadeInDown">Sign
-                                    in</button>
+                                <button type="submit" class="btn1 animate__animated animate__fadeInDown">Sign in</button>
                             </div>
                         </div>
-
                     </form>
                     <p class="animate__animated animate__fadeInDown">
                         You do not have an account? <a href="{{ route('boss.form') }}">Sign up</a>
@@ -67,5 +65,4 @@
 
     <script src="{{ url('/') }}/js/validation.js"></script>
 </body>
-
 </html>

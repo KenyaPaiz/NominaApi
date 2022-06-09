@@ -56,7 +56,7 @@
                         <h6>Phone Number</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="number" name="phoneNumber" placeholder="(+000)000-0000">
+                        <input class="input-contenedor" type="number" name="phoneNumber" placeholder="+000 0000-0000">
                     </div>    
                 </div>
                 <br>

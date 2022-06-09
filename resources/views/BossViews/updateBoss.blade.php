@@ -6,13 +6,13 @@
 @section('content')
 <section class="section-flex">
     <div class="form_container">
-        <form action="{{ route('employee.modify', $employee->id) }}" method="POST">
+        <form action="{{ route('boss.modify', $boss->id) }}" method="POST">
             @csrf
             @method("PUT")
-                
+
             <!-- Update Form -->
             <div class="TitleBoss">
-                    <h1 class="Title1">Update Employee</h1>
+                    <h1 class="Title1">Update Boss</h1>
                 </div>
                 <!-- Name -->
                 <div class="container">
@@ -20,7 +20,7 @@
                         <h6>Name</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="text" name="name" value="{{$employee->name}}">
+                        <input type="text" name="name" value="{{$boss->name}}">
                     </div>    
                 </div>
                 <br>
@@ -30,7 +30,7 @@
                         <h6>Last Name</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="text" name="lastName" value="{{$employee->lastName}}">     
+                        <input type="text" name="lastName" value="{{$boss->lastName}}">   
                     </div>    
                 </div>
                 <br>
@@ -40,7 +40,7 @@
                         <h6>Addrees</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="text" name="address" value="{{$employee->address}}">                    
+                        <input type="text" name="address" value="{{$boss->address}}">                    
                     </div>   
                 </div>
                 <br>
@@ -50,38 +50,38 @@
                         <h6>Phone Number</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="number" name="phoneNumber" value="{{$employee->phoneNumber}}">
+                        <input type="number" name="phoneNumber" value="{{$boss->phoneNumber}}"> 
                     </div>    
                 </div>
                 <br>
-                <!-- Position -->
+                <!-- UserName -->
                 <div class="container">
                     <div class="boxtitle">
-                        <h6>Position</h6>
+                        <h6>Username</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="text" name="position" value="{{$employee->position}}"> 
+                        <input type="text" name="userName" value="{{$boss->userName}}">
                     </div>
                 </div>
                 <br>
-                <!-- Salary -->
+                <br>
+                <!-- Password -->
                 <div class="container">
                     <div class="boxtitle">
-                        <h6>Salary</h6>
+                        <h6>Password</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="number" name="salary" value="{{$employee->salary}}">  
+                        <input type="text" name="password" value="{{$boss->password}}"> 
                     </div>
                 </div>
-                <br>
                 <br>
                 <!-- Button -->
                 <div class="container">
                     <div class="button-box">
-                        <input type="submit" name="submit">
+                        <input type="submit" name="submit" >
                     </div>
-                </div>    
-        </form>
+                </div> 
+            </form>
     </div>  
 </section>
 @endsection

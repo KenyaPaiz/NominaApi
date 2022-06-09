@@ -4,8 +4,8 @@
 @extends('templateBoss')
 
 @section('content')
-<section class="section-flex">
-        <div class="form_container">
+    <section class="section-flex">
+        <div class="form_containerEmployee">
             <form action="{{ route('employe.save') }}" method="POST">
                 @csrf
 
@@ -100,14 +100,12 @@
                         <input class="input-contenedor" type="password" name="ConPassword" placeholder="Password">
                     </div>   
                 </div>
-                <br><br>
-                <div class="container">
-                    <div class="button-box">
-                        <input id="button" type="submit" name="register" value="Register" class="btn btn-success">
-                    </div>
+                <br>
+                <div class="button-box">
+                    <input id="button" type="submit" name="register" value="Register" class="btn btn-success">
                 </div>
             </form>
         </div>
-</section>
+    </section>
 @endsection
 

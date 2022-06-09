@@ -10,7 +10,7 @@
         <tr>
             <th>Name</th>
             <th>Address</th>
-            <th>Actions</th>
+            <th colspan="2">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -22,7 +22,8 @@
                 <form action="{{ route("company.edits", $element->id) }}" method="GET">
                     <button type="submit" name="edit">Edit</button>
                 </form>
-                <br>
+            </td>   
+            <td>
                 <form action="{{ route("company.inactive", $element->id) }}" method="GET">
                     <button type="submit" name="delete">Delete</button>
                 </form>

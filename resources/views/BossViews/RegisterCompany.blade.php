@@ -5,10 +5,9 @@
 
 @section('content')
     <section class="section-flex">
-        <div class="form_container">
+        <div class="form_containerCompany">
             <form action="{{ route('company.save') }}" method="POST">
                 @csrf
-                <i class="fa-solid fa-user icono" class="icon"></i>
 
                 <div class="TitleBoss">
                     <h1 class="Title1">Register as Company</h1>

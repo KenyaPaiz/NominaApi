@@ -11,18 +11,17 @@ body{
 
 }
 
-.form_container{
+.form_containerEmployee{
     justify-content: center;
     background-color: rgb(255, 255, 255, 100%);
     width: 475px;
-    height: 750px;
+    height: 900px;
     position: relative;
     margin: auto;
-    margin-bottom: 20px;
     border-radius: 30px;
 }
 
-.form_container::after{
+.form_containerEmployee::after{
     justify-content: center;
     position:absolute;
     top: 0;
@@ -105,19 +104,55 @@ body{
     color: #1E3C4B;
   }
 
+  .container{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+  }
+
   .button-box{
     margin-left: 38%;
     width: 20px;
     justify-content: center;
-    margin-top: 30px;
-}
-
-.container{
-  display: flex;
-  justify-content: center;
+    margin-top: 7px;
 }
 
 #button{
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 7px;
+}
+
+
+
+
+
+
+
+
+/*Company*/
+
+.form_containerCompany{
+  justify-content: center;
+  background-color: rgb(255, 255, 255, 100%);
+  width: 475px;
+  height: 275px;
+  position: relative;
+  margin: auto;
+  border-radius: 30px;
+}
+
+.form_containerCompany::after{
+  justify-content: center;
+  position:absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  background: #778E93;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  width: 475px;
+  height: 275px;
+  filter: blur(10px);
+  z-index: -1;
+  border-radius: 30px;
 }

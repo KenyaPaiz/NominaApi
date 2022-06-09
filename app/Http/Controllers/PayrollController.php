@@ -22,13 +22,13 @@ class PayrollController extends Controller
                 $getEmployee = Employee::where("id",$idEmp)->get();
                 if($value["id"] == $getEmployee[0]["idBoss"]){
 
-                     $isr = $getEmployee[0]["salary"] * ISR;
-                     $isss = $getEmployee[0]["salary"] * ISSS;
-                     $afp = $getEmployee[0]["salary"] * AFP;
-                     
-                     $result = $getEmployee[0]["salary"] - ($isr + $isss + $afp);
+                    $isr = $getEmployee[0]["salary"] * ISR;
+                    $isss = $getEmployee[0]["salary"] * ISSS;
+                    $afp = $getEmployee[0]["salary"] * AFP;
+                    
+                    $result = $getEmployee[0]["salary"] - ($isr + $isss + $afp);
 
-                     $json = array(
+                    $json = array(
                         "status" => 200,
                         "detail" => array(
                             "Salary" => "$".$getEmployee[0]["salary"],

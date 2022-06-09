@@ -14,7 +14,7 @@ body{
 .form_container{
     background-color: rgb(255, 255, 255, 100%);
     width: 475px;
-    height: 500px;
+    height: 700px;
     position: relative;
     align-items: center;
     justify-content: center;
@@ -38,45 +38,43 @@ body{
     border-radius: 20px;
   }
   
-  
-  
   .input-contenedor{
-      display: flex;
-      background-color: rgba(245, 245, 220, 0%) ;
-      border-radius: 0px;
-      border-top: 5px;
-      border-left: 5px;
-      border-right: 5px;
-      margin-left: 5%;
-      width: 220px;
-      margin-top: 5%;
-      float: right;
-      margin-right: 5%;
-      height: fit-content;
-  
-  }
-  
-  .Title1{
-    color: #1E3C4B;
     display: flex;
-    justify-content: center;
-    font-weight: bold;
-    font-family: Poppins;
-  }
-  
-  .TitleBoss{
-    margin:auto;
-    margin-top: 10px;
-  }
-  
-  .boxtitle{
-    float: left;
-    margin-top: 5%;
+    background-color: rgba(245, 245, 220, 0%) ;
+    border-radius: 0px;
+    border-top: 5px;
+    border-left: 5px;
+    border-right: 5px;
     margin-left: 5%;
-    width: 150px;
+    width: 220px;
+    margin-top: 5%;
+    justify-content: left;
+    margin-right: 5%;
     height: fit-content;
-   
-  }
+
+}
+  
+.Title1{
+  color: #1E3C4B;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-family: Poppins;
+}
+
+.TitleBoss{
+  margin:auto;
+  margin-top: 10px;
+}
+
+.boxtitle{
+  justify-content: right;
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 140px;
+  height: fit-content;
+ 
+}
   
   a{
     color: #1E3C4B;
@@ -107,15 +105,22 @@ body{
     color: #1E3C4B;
   }
 
-  .button-box{
 
-    width: 20px;
-    justify-content: center;
-}
-
-.icon{
+.container{
+  display: flex;
   justify-content: center;
-  margin: auto;
+  margin-top: 5px;
 }
 
+.button-box{
+  margin-left: 38%;
+  width: 20px;
+  justify-content: center;
+  margin-top: 7px;
+}
+
+#button{
+justify-content: center;
+margin-top: 7px;
+}
   
