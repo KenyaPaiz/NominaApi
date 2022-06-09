@@ -23,7 +23,7 @@
     font-family: 'Montserrat';
 }
 
-.inp {
+.inp{
     height: 60px;
     width: 70%;
     border: none;
@@ -48,3 +48,73 @@
 .btn1:hover {
     background-color: #37a776;
 }
+
+
+/* form input */
+/* .container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
+  } */
+/*
+.form-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+
+  }
+*/
+  .control-form.success input {
+    border-color: #2ecc71;
+    width: 60%;
+    box-shadow: -1px 1px 30px -11px rgba(37, 200, 70, 0.75);
+    -webkit-box-shadow: -1px 1px 30px -11px rgba(37, 200, 70, 0.75);
+    -moz-box-shadow: -1px 1px 30px -11px rgba(37, 200, 70, 0.75);
+  }
+
+  .control-form.error input {
+    border-color: #e74c3c;
+    width: 60%;
+    box-shadow: -1px 1px 30px -11px rgba(207, 46, 46, 0.75);
+    -webkit-box-shadow: -1px 1px 30px -11px rgba(207,0,0,0.75);
+    -moz-box-shadow: -1px 1px 30px -11px rgba(207,0,0,0.75);
+
+  }
+/*
+  .control-form.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+  } */
+
+  /* .control-form.error i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+  }
+
+  .control-form i {
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    visibility: hidden;
+  } */
+
+  .control-form small{
+    visibility: hidden;
+    /* position: absolute;
+    bottom: 0;
+    left: 0; */
+
+}
+   .control-form.error small {
+    color: #e74c3c;
+    visibility: visible;
+  }
+
+

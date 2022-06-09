@@ -10,6 +10,7 @@ use Illuminate\Support\Js;
 class loginController extends Controller
 {
     public function accessBoss(Request $request){
+
         $user = $request->post('user');
         $password = $request->post('password');
 
@@ -26,6 +27,11 @@ class loginController extends Controller
     }
 
     public function access(Request $request){
+        $request->validate([
+            'user' => 'required',
+            'password' => 'required'
+        ]);
+
         $user = $request->post('user');
         $password = $request->post('password');
         $array = ['1','2','3'];
@@ -35,9 +41,9 @@ class loginController extends Controller
         //boss access
         $accessBoss = Boss::select('name', 'id')->where("userName","=",$user)
         ->where("password","=",$password)->get();
-        
+
         //employe access
-        
+
         if($access == $array[1]){
             foreach($accessBoss as $value){
                 session(['bossId'=> $value->id]); //get Id
