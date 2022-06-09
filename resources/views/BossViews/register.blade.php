@@ -1,11 +1,6 @@
-@extends('resources')
-<body>
-    <header>
-        <nav>
-            <a href="#">Log In</a>
-            <a href="#">About us</a>
-        </nav>
-    </header>
+@extends('plantilla')
+
+@section('content')
     <section class="section-flex">
         <div class="form_container">
             <form action="{{ route('boss.register') }}" method="POST">
@@ -90,7 +85,4 @@
             </form>
         </div>       
     </section>
-    
-</body>
-</html>
-
+@endsection

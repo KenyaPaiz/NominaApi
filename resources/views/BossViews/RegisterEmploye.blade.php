@@ -1,11 +1,7 @@
-@extends('resources')
-<body>
-    <header>
-        <nav>
-            <a href="#">About us</a>
-        </nav>
-    </header>
-    <section class="section-flex">
+@extends('plantilla')
+
+@section('content')
+<section class="section-flex">
         <div class="form_container">
             <form action="{{ route('employe.save') }}" method="POST">
                 @csrf
@@ -113,7 +109,6 @@
         <div>
             <i class="fa-thin fa-user" class="icon"></i>
         </div>
-    </section>
-</body>
-</html>
+</section>
+@endsection
 

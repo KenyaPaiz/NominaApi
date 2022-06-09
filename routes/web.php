@@ -37,8 +37,8 @@ Route::delete('/employee/destroyAll/{id}',[EmployeesController::class, 'destroyA
 Route::get('/', function() {
     return view('login');
 });
-//Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
-Route::get('/access',[loginController::class, 'access'])->name('boss.access');
+Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
+//Route::get('/access',[loginController::class, 'access'])->name('boss.access');
 
 // BOSS Data
 Route::get('/boss',[BossController::class, 'index'])->name('boss.table');
