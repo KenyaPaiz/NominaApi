@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
   <link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url('/') }}/css/main.css">
 </head>
+
 <body>
     <section class="login py-5 bg-light">
         <div class="container">
@@ -20,26 +22,40 @@
                     <img src="./img/tech.jpg" class="img-fluid">
 
                 </div>
-                <div class="col-lg-7 text-center py-5 my-5">
+                <div class="col-lg-7 text-center py-5 my-5 container">
                     <h1 class="animate__animated animate__fadeInDown">LOGIN</h1>
 
-                    <form action="{{ route('boss.access') }}" method="POST">
-                        @method("GET")
+                    <form id="form" action="{{ route('boss.access') }}" method="POST">
+                        @method('GET')
                         <div class="form-row  pt-5">
-                            <div class="offset-1 col-lg-10">
-                                <input type="text" name="user" class="inp px-3 animate__animated animate__fadeInDown" placeholder="User name...">
+                            <div class="offset-1 col-lg-10 control-form">
+                                <input type="text" name="user" class="inp px-3 animate__animated animate__fadeInDown"
+                                    placeholder="User name..." id="username">
+                                {{-- <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i> --}}
+                                <br>
+                                <small>Error message</small>
+
                             </div>
                         </div>
                         <div class="form-row pt-3">
-                            <div class="offset-1 col-lg-10">
-                                <input type="password" name="password" class="inp px-3 animate__animated animate__fadeInDown" placeholder="Password...">
+                            <div class="offset-1 col-lg-10 control-form">
+                                <input type="password" name="password"
+                                    class="inp px-3 animate__animated animate__fadeInDown" placeholder="Password..."
+                                    id="password">
+                                    {{-- <i class="fas fa-check-circle"></i>
+                                    <i class="fas fa-exclamation-circle"></i> --}}
+                                    <br>
+                                    <small>Error message</small>
                             </div>
                         </div>
                         <div class="form-row pt-4 pb-3">
                             <div class="offset-1 col-lg-10">
-                               <button class="btn1 animate__animated animate__fadeInDown">Sign in</button>
+                                <button type="submit" class="btn1 animate__animated animate__fadeInDown">Sign
+                                    in</button>
                             </div>
                         </div>
+
                     </form>
                     <p class="animate__animated animate__fadeInDown">
                         You do not have an account? <a href="{{ route('boss.form') }}">Sign up</a>
@@ -48,5 +64,8 @@
             </div>
         </div>
     </section>
+
+    <script src="{{ url('/') }}/js/validation.js"></script>
 </body>
+
 </html>
