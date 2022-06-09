@@ -11,8 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url('/') }}/css/main.css">
-
-
 </head>
 <body>
     <section class="login py-5 bg-light">
@@ -44,7 +42,7 @@
                         </div>
                     </form>
                     <p class="animate__animated animate__fadeInDown">
-                        You do not have an account? <a href="#">Sign up</a>
+                        You do not have an account? <a href="{{ route('boss.form') }}">Sign up</a>
                     </p>
                 </div>
             </div>

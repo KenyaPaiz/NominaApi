@@ -11,12 +11,10 @@ use Illuminate\Support\Facades\Validator;
 class CompanyController extends Controller
 {
     public function index(){
-        $company = Company::join('boss','company.idBoss','=','boss.id')
-                ->select('company.id as id','company.name as name','company.address as address','boss.name as boss')
-                ->where('company.idStatus','=',1)->get();
+        $id_boss = session('bossId');
+        $company = Company::where('company.idStatus','=',1)->where("idBoss","=",$id_boss)->get();
 
-        return view("BossViews.AllCompanies",
-        array("company" => $company));
+        return view("BossViews.AllCompanies",array("company" => $company));
     }
 
     public function create(){
@@ -40,30 +38,6 @@ class CompanyController extends Controller
     public function edit($id){
         $company = Company::find($id);
         return view("BossViews.updateCompany",array('company' => $company));
-    }
-
-    public function show($id, Request $request){
-        $boss = Boss::all();
-        $json = array();
-
-        foreach($boss as $key => $value){
-                $company = Company::where('company.id',$id)->join('boss','company.idBoss','=','boss.id')
-                            ->select('company.name','company.address','company.idBoss as idBoss','boss.name as boss')
-                            ->get();
-                if($value["id"] == $company[0]["idBoss"]){
-                    $json = array(
-                        "status" => 200,
-                        "detail" => $company
-                    );
-                }else{
-                    $json = array(
-                        "status" => 404,
-                        "detail" => "sorry, you are not authorized to view this company"
-                    );
-                }
-        }
-        
-        return json_encode($json, true);
     }
 
     public function update($id, Request $request){
@@ -99,6 +73,6 @@ class CompanyController extends Controller
                     $company = Company::where('id', $id)->update($data);
                 }
         }
-    return redirect()->route("company.table2");
+        return redirect()->route("company.table2");
     }
 }

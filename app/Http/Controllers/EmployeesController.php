@@ -11,24 +11,15 @@ use Illuminate\Support\Facades\DB;
 class EmployeesController extends Controller{
 
     public function index(){
-        /*Select the table to show the employees with the boss and company name.
-        $employee = DB::table('employee')->join('boss','employee.idBoss','=','boss.id')
-                    ->join('company','employee.idCompany','=','company.id')
-                    ->select('employee.name','employee.lastName','employee.phoneNumber',
-                             'employee.address','employee.salary','employee.userName',
-                             'boss.name as boss','company.name as company')
-                    ->where('employee.idStatus','=',1)->get();
-        $json = array(
-            "status" => 200,
-            "detalle" => $employee
-        );
-
-        return json_encode($json, true);*/
         $id_boss = session('bossId');
         $employee = Employee::where("idStatus","=",1)->where("idBoss","=",$id_boss)->get();
 
         return view("BossViews.AllEmployee", array("employee" => $employee));
 
+    }
+
+    public function getTemplate(){
+        return view("templateEmployee");
     }
 
     public function create(){
@@ -54,28 +45,11 @@ class EmployeesController extends Controller{
         return redirect()->route('employe.table3');
     }
 
-    public function show($id){
-        //Select the employee by the id with the boss and company name.
-        $employee = Employee::where('employee.id',$id)->join('boss','employee.idBoss','=','boss.id')
-                        ->join('company','employee.idCompany','=','company.id')
-                        ->select('employee.name','employee.lastName','employee.phoneNumber',
-                                'employee.address','employee.salary','employee.userName',
-                                'boss.name as boss','company.name as company')
-                        ->get();
-        
-        if(!empty($employee)){
-           $json = array(
-                "status" => 200,
-                "detail" => $employee
-           );
-        }else{
-            $json = array(
-                "status" => 200,
-                "detail" => "Error getting employee."
-           );
-        }
+    public function show(){
+        $id_employee = session('employeeId');
+        $employee = Employee::where("id","=", $id_employee)->get();
 
-        return json_encode($json, true);
+        return view("EmployeesViews.profile", array("employee" => $employee));
     }
 
     public function edit($id){

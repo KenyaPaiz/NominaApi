@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@php
+    session();
+@endphp
+@extends('templateEmployee')
+
+@section('content')
 <body>
-    
+    @foreach ($employee as $item)
+        <label for="">Name:</label>
+        <p>{{ $item->name }}</p>
+        <label for="">LastName:</label>
+        <p>{{ $item->lastName }}</p>
+        <label for="">PhoneNumber:</label>
+        <p>{{ $item->phoneNumber }}</p>
+        <label for="">Address:</label>
+        <p>{{ $item->address }}</p>
+        <label for="">Position:</label>
+        <p>{{ $item->position }}</p>
+        
+    @endforeach
 </body>
-</html>
+@endsection

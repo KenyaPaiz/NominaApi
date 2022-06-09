@@ -1,11 +1,13 @@
-@extends('plantilla')
+@php
+    session();
+@endphp
+@extends('templateBoss')
 
 @section('content')
 <section class="section-flex">
         <div class="form_container">
             <form action="{{ route('employe.save') }}" method="POST">
                 @csrf
-                <i class="fa-solid fa-user icono" class="icon"></i>
 
                 <div class="TitleBoss">
                     <h1 class="Title1">Register Employee</h1>
@@ -101,13 +103,10 @@
                 <br><br>
                 <div class="container">
                     <div class="button-box">
-                        <input type="submit" name="register" value="Register" class="btn btn-success">
+                        <input id="button" type="submit" name="register" value="Register" class="btn btn-success">
                     </div>
                 </div>
             </form>
-        </div>
-        <div>
-            <i class="fa-thin fa-user" class="icon"></i>
         </div>
 </section>
 @endsection

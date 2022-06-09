@@ -1,48 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url('/')}}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url('/')}}/css/main.css">
-    <link rel="stylesheet" href="{{ url('/') }}/css/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/boss_register.css">
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/register_company.css">
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/register_employee.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script src="{{ url('/') }}/js/bootstrap.min.js"></script>
-</head>
+@php
+    session();
+@endphp
+@include('resources')
 <body>
     <div class="main-container d-flex">
         <div class="sidebar" id="side_nav">
             <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
                 <!-- <h1 class="fs-4"><span class="bg-white text-dark rounded shadow px-2 me-2">BS</span> <span class="text-white">Boss Profile</span></h1> -->
-                <h1 class="fs-4"> <span class="rounded shadow px-3 me-2 text-white">Boss Profile</span></h1>
+                <h1 class="fs-4"> <span class="rounded shadow px-3 me-2 text-white">Admin Profile</span></h1>
                 <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="fa-solid fa-bars-staggered"></i></button>
             </div>
 
             <ul class="list-unstyled px-2">
-                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i
-                            class="fa-solid fa-building"></i> Register Company</a></li>
-                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i
-                            class="fa-solid fa-users"></i> Register Employee</a></li>
-                <li class=""><a href="{{ route('employe.table3') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
-                        Show Employee</a></li>
-                <li class=""><a href="{{ route('company.table2') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
-                        Show Company</a></li>
+                <li class=""><a href="{{ route('boss.table') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
+                        Show Boss</a></li>
             </ul>
             <hr class="h-color mx-2">
 
             <ul class="lust-unstyled px-2">
-                <li class=""><a href="./index.html" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</a></li>
+                <li class=""><a href="{{ route('login.view') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</a></li>
             </ul>
         </div>
         <div class="content">
@@ -62,16 +38,17 @@
                         <ul class="navbar-nav  mb-2 mb-lg-0 ">
                             <li class="nav-item  ">
                                 <!-- <a class="nav-link active" aria-current="page" href="#">Profile</a> -->
-                                <p class="name-profile">Mathew Morgan</p>
+                                <p class="name-profile">
+                                    @php
+                                        //get boss name for log ing
+                                        echo session('adminName');
+                                    @endphp
+                                </p>
                             </li>
                             <li>
                                 <div class="img-perfil"></div>
                             </li>
-
-
-
                         </ul>
-
                     </div>
                 </div>
             </nav>

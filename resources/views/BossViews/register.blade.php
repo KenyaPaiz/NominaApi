@@ -1,6 +1,17 @@
-@extends('plantilla')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url('/')}}/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/boss_register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="{{ url('/') }}/js/bootstrap.min.js"></script>
+</head>
+<body>
     <section class="section-flex">
         <div class="form_container">
             <form action="{{ route('boss.register') }}" method="POST">
@@ -85,4 +96,6 @@
             </form>
         </div>       
     </section>
-@endsection
+</body>
+</html>
+

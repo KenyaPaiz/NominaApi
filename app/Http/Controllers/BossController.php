@@ -17,6 +17,10 @@ class BossController extends Controller
         );
     }
 
+    public function getTemplate(){
+        return view("templateBoss");
+    }
+
     public function create(){
         return view("BossViews.register");
     }
@@ -35,7 +39,7 @@ class BossController extends Controller
         $boss->idRol = 2;
         $boss->save();
 
-        return redirect()->route("boss.table");
+        return redirect()->route("login.view");
  
     }
 

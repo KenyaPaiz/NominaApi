@@ -1,7 +1,7 @@
 @php
     session();
 @endphp
-@extends('plantilla')
+@extends('templateBoss')
 
 @section('content')
     <section class="section-flex">

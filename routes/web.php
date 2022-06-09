@@ -9,7 +9,6 @@ use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Employee;
 use Illuminate\Http\Request;
 
 /*
@@ -32,13 +31,17 @@ Route::resource('/employee',"App\Http\Controllers\EmployeesController");
 Route::get('/taxes/{idEmp}',[PayrollController::class,'calculateTaxes']);
 Route::delete('/employee/destroyAll/{id}',[EmployeesController::class, 'destroyAll']);*/
 
-// ROUTES - WEB
+/*** ROUTES - WEB */
 // LOGIN
 Route::get('/', function() {
-    return view('login');
-});
-Route::get('/access',[loginController::class, 'accessBoss'])->name('boss.access');
-//Route::get('/access',[loginController::class, 'access'])->name('boss.access');
+    return view('login'); 
+})->name('login.view');
+Route::get('/access',[loginController::class, 'access'])->name('boss.access');
+
+/** TEMPLATES */
+Route::get('/templateBoss', [BossController::class, 'getTemplate'])->name('boss.template');
+Route::get('/templateAdmin', [AdminController::class, 'getTemplate'])->name('admin.template');
+Route::get('/templateEmployee', [EmployeesController::class, 'getTemplate'])->name('employee.template');
 
 // BOSS Data
 Route::get('/boss',[BossController::class, 'index'])->name('boss.table');
@@ -56,8 +59,9 @@ Route::get('/editCompany/{id}',[CompanyController::class, 'edit'])->name('compan
 Route::put('/updateCompany/{id}',[CompanyController::class, 'update'])->name('company.modify');
 Route::delete('/deactiveCompany/{id}',[CompanyController::class, 'destroy'])->name('company.inactive');
 
-//empleoye Data
+//Employee Data
 Route::get('/employeIndex',[EmployeesController::class, 'index'])->name('employe.table3');
+Route::get('/showEmployee',[EmployeesController::class, 'show'])->name('employee.profile');
 Route::get('/registerEmploye',[EmployeesController::class, 'create'])->name('employe.register');
 Route::post('/storeEmploye',[EmployeesController::class, 'store'])->name('employe.save');
 Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('employe.edits');
@@ -66,8 +70,5 @@ Route::put('/deactiveCompany/{id}',[EmployeesController::class, 'destroy'])->nam
 
 // PDF
 Route::get('/generatePDF',[PDFController::class, 'generatePDF'])->name('pdf');
-
-
-
 
 
