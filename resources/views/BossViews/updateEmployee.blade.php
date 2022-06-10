@@ -5,7 +5,7 @@
 
 @section('content')
 <section class="section-flex">
-    <div class="form_container">
+    <div class="form_containerEmployeeUpdate">
         <form action="{{ route('employee.modify', $employee->id) }}" method="POST">
             @csrf
             @method("PUT")
@@ -20,7 +20,7 @@
                         <h6>Name</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="text" name="name" value="{{$employee->name}}">
+                        <input class="input-contenedor" type="text" name="name" value="{{$employee->name}}">
                     </div>    
                 </div>
                 <br>
@@ -30,7 +30,7 @@
                         <h6>Last Name</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="text" name="lastName" value="{{$employee->lastName}}">     
+                        <input class="input-contenedor" type="text" name="lastName" value="{{$employee->lastName}}">     
                     </div>    
                 </div>
                 <br>
@@ -40,7 +40,7 @@
                         <h6>Addrees</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="text" name="address" value="{{$employee->address}}">                    
+                        <input class="input-contenedor" type="text" name="address" value="{{$employee->address}}">                    
                     </div>   
                 </div>
                 <br>
@@ -50,7 +50,7 @@
                         <h6>Phone Number</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="number" name="phoneNumber" value="{{$employee->phoneNumber}}">
+                        <input class="input-contenedor" type="number" name="phoneNumber" value="{{$employee->phoneNumber}}">
                     </div>    
                 </div>
                 <br>
@@ -60,7 +60,7 @@
                         <h6>Position</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="text" name="position" value="{{$employee->position}}"> 
+                        <input class="input-contenedor" type="text" name="position" value="{{$employee->position}}"> 
                     </div>
                 </div>
                 <br>
@@ -70,17 +70,13 @@
                         <h6>Salary</h6>
                     </div>
                     <div class="cont-input">
-                        <input type="number" name="salary" value="{{$employee->salary}}">  
+                        <input class="input-contenedor" type="number" name="salary" value="{{$employee->salary}}">  
                     </div>
                 </div>
                 <br>
-                <br>
-                <!-- Button -->
-                <div class="container">
-                    <div class="button-box">
-                        <input type="submit" name="submit">
-                    </div>
-                </div>    
+                <div class="button-box">
+                    <input id="button" type="submit" name="update" value="Update" class="btn btn-success">
+                </div>
         </form>
     </div>  
 </section>

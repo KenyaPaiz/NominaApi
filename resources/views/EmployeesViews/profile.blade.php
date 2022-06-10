@@ -7,7 +7,7 @@
 <body>
     @foreach ($employee as $item)
     <section class="section-flex">
-        <div class="form_container">
+        <div class="form_containerEmployee">
             <!-- Profile Form -->
             <form action="{{ route('employe.save') }}" method="POST">
                 @csrf

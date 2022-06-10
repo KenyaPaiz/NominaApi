@@ -4,22 +4,24 @@
 @extends('templateBoss')
 
 @section('content')
-<section>
-    <table class="table table-bordered">
-            @php
-                $cont = 1;
-            @endphp
-            
+<main>
+    <div class="content h1">
+        <h1>Employee</h1>
+    </div>
+    <table class="table table-hover">
+        @php
+            $cont = 1;
+        @endphp
         <thead>
             <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>LastName</th>
-                    <th>CellPhone</th>
-                    <th>Address</th>
-                    <th>Position</th>
-                    <th>Salary</th>
-                    <th colspan="2">Actions</th>
+                <th>#</th>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>CellPhone</th>
+                <th>Address</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th colspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -34,29 +36,23 @@
                     <td>$ {{ $item->salary }}</td>
                     <td>
                         <form action="{{ route('employe.edits', $item->id) }}" method="GET">
-                            <button type="submit" name="editEmployee">Edit</button>
+                            <button class="btn btn-success" type="submit" name="editEmployee">Edit</button>
                         </form>
                     </td>
                     <td>
                         <form action="{{ route("employee.inactive", $item->id) }}" method="POST">
                             @method("PUT")
                             @csrf
-                            <button type="submit" name="deleteEmployee">Delete</button>
+                            <button class="btn btn-danger" type="submit" name="deleteEmployee">Delete</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
-                
         </tbody>
-        <br>
     </table>
-</section>
-<br>
-<!-- Links -->
-<section>
-    <a href="{{ route('pdf') }}">PDF</a>
-    <br>
-    <a href="{{ route('boss.taxes') }}">ALL PAYROLS</a>
-</section>
-
+    <div class="content options">
+        <a class="btn btn-primary" href="{{ route('pdf') }}">PDF</a>
+        <a class="btn btn-primary" href="{{ route('boss.taxes') }}">ALL PAYROLS</a>
+    </div>
+</main>
 @endsection

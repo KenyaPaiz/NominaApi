@@ -13,8 +13,8 @@
         table {
             width: 100%;
             border: 1px solid #000;
-            }
-            th, td {
+        }
+        th, td {
             width: 25%;
             text-align: left;
             vertical-align: top;

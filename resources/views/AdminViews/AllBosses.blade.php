@@ -4,9 +4,11 @@
 @extends('templateAdmin')
 
 @section('content')
-<br>
-<body>
-    <table class="table table-bordered">
+<main>
+    <div class="content h1">
+        <h1>Bosses</h1>
+    </div>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>#</th>
@@ -32,12 +34,12 @@
                     <form action="{{ route("boss.inactive", $element->id) }}" method="POST">
                         @method("PUT")
                         @csrf
-                        <button type="submit" name="delete">Delete</button>
+                        <button class="btn btn-danger" type="submit" name="delete">Delete</button>
                     </form>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
-</body>
+</main>
 @endsection

@@ -6,7 +6,7 @@
 @section('content')
 
 <section class="section-flex">
-        <div class="form_container">
+        <div class="form_containerCompany">
         <form action="{{ route('company.modify', $company->id) }}" method="POST">
             @csrf
             @method("PUT")
@@ -21,7 +21,7 @@
                     <h6>Name</h6>
                 </div>
                 <div class="cont-input">
-                    <input type="text" name="name" value="{{$company->name}}"> 
+                    <input class="input-contenedor" type="text" name="name" value="{{$company->name}}"> 
                 </div>    
             </div>
             <br>
@@ -31,13 +31,13 @@
                     <h6>Address</h6>
                 </div>
                 <div class="cont-input">
-                    <input type="text" name="address" value="{{$company->address}}"> 
+                    <input class="input-contenedor" type="text" name="address" value="{{$company->address}}"> 
                 </div>    
             </div>
             <br>
             <!-- Button -->
             <div class="button-box">
-                <input type="submit" name="submit" >
+                <input type="submit" name="submit" class="btn btn-success" value="update">
             </div>
         </form>
     </div>
