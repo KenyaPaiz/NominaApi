@@ -39,6 +39,7 @@
                             <li class="nav-item  ">
                                 <!-- <a class="nav-link active" aria-current="page" href="#">Profile</a> -->
                                 <p class="name-profile">
+                                    Welcome 
                                     @php
                                         //get boss name for log ing
                                         echo session('adminName');
