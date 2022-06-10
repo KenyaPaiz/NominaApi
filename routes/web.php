@@ -50,7 +50,7 @@ Route::post('/store',[BossController::class, 'store'])->name('boss.register');
 Route::get('/edit/{id}',[BossController::class, 'edit'])->name('boss.edits');
 Route::put('/update/{id}',[BossController::class, 'update'])->name('boss.modify');
 Route::put('/deactive/{id}',[BossController::class, 'destroy'])->name('boss.inactive');
-Route::get('/taxeEmployee',[PayrollController::class,'taxes_employee'])->name('boss.taxes');
+
 
 //Company Data
 Route::get('/companyIndex',[CompanyController::class, 'index'])->name('company.table2');
@@ -71,5 +71,6 @@ Route::put('/deactiveCompany/{id}',[EmployeesController::class, 'destroy'])->nam
 
 // PDF
 Route::get('/generatePDF',[PDFController::class, 'generatePDF'])->name('pdf');
+Route::get('/taxeEmployee',[PDFController::class,'taxes_employee'])->name('boss.taxes');
 
 

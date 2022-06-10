@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\PayRoll;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
@@ -14,28 +15,20 @@ class PDFController extends Controller
         $pdf = PDF::loadView('pdfEmploy', $data);
         
         //return $pdf->download('employee.pdf');
-       
+        return $pdf->stream();
     }
 
     public function taxes_employee(){
-        define("ISR",0.1);
-        define("ISSS",0.07);
-        define("AFP",0.07);
+        $payroll = PayRoll::join('employee', 'payroll.idEmployee', '=', 'employee.id')
+                    ->select('employee.name as name','employee.lastName as lastName', 'employee.salary as salary',
+                    'payroll.salaryTotal as netSalary')->get();
 
-        $idBoss = session('bossId');
-        $getEmployee = Employee::where("idBoss","=",$idBoss)->get();
-        foreach($getEmployee as $value){
-            $isr = $value->salary * ISR;
-            $isss = $value->salary * ISSS;
-            $afp = $value->salary * AFP;
-            $result = $value->salary - ($isr + $isss + $afp);
-
-            $data = ["employee" => $value, "total" => $result];
-            
-        }
+        $data = ["payroll" => $payroll];
         $pdf = PDF::loadView('EmployeesViews.payrol', $data);
-        return $pdf->stream();
         
+        //return $pdf->download('employee.pdf');
+        return $pdf->stream();
+
     }
     
 }

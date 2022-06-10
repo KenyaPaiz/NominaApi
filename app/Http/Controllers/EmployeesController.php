@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Boss;
 use Illuminate\Support\Facades\DB;
+use App\Models\PayRoll;
 
 class EmployeesController extends Controller{
 
@@ -25,13 +26,14 @@ class EmployeesController extends Controller{
     }
 
     public function store(Request $request){
+        
         $employee = new Employee();
         $employee->name = $request->post('name');
         $employee->lastName = $request->post('lastName');
         $employee->phoneNumber = $request->post('phoneNumber');
         $employee->address = $request->post('address');
         $employee->position = $request->post('position');
-        $employee->salary = $request->post('salary');
+        $total = $employee->salary = $request->post('salary');
         $employee->userName = $request->post('userName');
         $employee->password = $request->post('password');
         $employee->idBoss = session('bossId');
@@ -39,7 +41,23 @@ class EmployeesController extends Controller{
         $employee->idStatus = 1;
         $employee->idRol = 3;
         $employee->save();
-            
+
+        //constants 
+        define("ISR",0.1);
+        define("ISSS",0.07);
+        define("AFP",0.07);
+        $idEmp = $employee->id;
+        $isr = $total * ISR;
+        $isss = $total * ISSS;
+        $afp = $total * AFP;
+        //calculate of taxes
+        $result = $total - ($isr + $isss + $afp);
+        /** SAVE in table Payrol */
+        $taxes = new PayRoll();
+        $taxes->idEmployee = $idEmp;
+        $taxes->salaryTotal = $result;
+        $taxes->save();
+        
         return redirect()->route('employe.table3');
     }
 
