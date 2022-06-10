@@ -34,17 +34,22 @@
 
                 <div class="container">
                     <div class="boxtitle">
-                        <h6>Addrees</h6>
+                        <h6>Department</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="address" placeholder="State, city, street...">
+                        <select name="department" id="">
+                            <option value=""></option>
+                            @foreach ($department as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
                     </div>   
                 </div>
                 <br>
 
                 <div class="container">
                     <div class="boxtitle">
-                        <h6>Posotion</h6>
+                        <h6>Position</h6>
                     </div>
                     <div class="cont-input">
                         <input class="input-contenedor" type="text" name="position" placeholder="Position">

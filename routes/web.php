@@ -67,10 +67,14 @@ Route::get('/registerEmploye',[EmployeesController::class, 'create'])->name('emp
 Route::post('/storeEmploye',[EmployeesController::class, 'store'])->name('employe.save');
 Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('employe.edits');
 Route::put('/updateEmployee/{id}',[EmployeesController::class, 'update'])->name('employee.modify');
-Route::put('/deactiveCompany/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
+Route::get('/showEmployeeInactive',[EmployeesController::class, 'showInactive'])->name('employe.tableInactive');
+Route::put('/deactiveEmployee/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
 
 // PDF
 Route::get('/generatePDF',[PDFController::class, 'generatePDF'])->name('pdf');
 Route::get('/taxeEmployee',[PDFController::class,'taxes_employee'])->name('boss.taxes');
+Route::get('/viewReport',[BossController::class, 'getFilterEmployee'])->name('boss.filter');
+Route::get('/positionReport',[PDFController::class, 'filterPosition'])->name('filterPosition');
+Route::get('/departmentReport',[PDFController::class, 'filterDeparment'])->name('filterDepartment');
 
 
