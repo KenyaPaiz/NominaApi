@@ -4,34 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        h1{
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border: 1px solid #000;
-        }
-        th, td {
-            width: 25%;
-            text-align: left;
-            vertical-align: top;
-            border: 1px solid #000;
-            border-collapse: collapse;
-            padding: 0.3em;
-            caption-side: bottom;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <title>Payroll REPORT</title>
 </head>
+
 <body>
-    <h1>Payroll Employees</h1>
-    <h3>Taxes: </h3>
-    <h4>IVA = 14%</h4>
-    <h4>ISSS = 7%</h4>
-    <h4>ISR = 7%</h4>
-    <table>
+
+    <h1 class="text-center">Payroll Employees</h1>
+    <table class="table table-dark">
         @php
             $cont = 1;
         @endphp
@@ -44,9 +26,10 @@
                 <th>Net Salary</th>
             </tr>
         </thead>
+
         <tbody>
             @foreach ($payroll as $item)
-                <tr>
+                <tr class="text-center">
                     <td>@php echo $cont++; @endphp</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->lastName }}</td>
@@ -55,7 +38,14 @@
                 </tr>
             @endforeach
         </tbody>
+
+        <tfoot>
+            <tr class="text-center">
+                <td colspan='5'>TAXES:  ISR = 7%  ---  ISSS = 7%  ---  IVA = 14%  ---  </td>
+            </tr>
+        </tfoot>
     </table>
 </body>
 </html>
+
 
