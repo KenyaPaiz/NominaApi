@@ -19,10 +19,10 @@
     <table class="table table-dark">
         <thead>
             <tr>
-                <th>NAME</th>
-                <th>LAST NAME</th>
-                <th>POSITION</th>
-                <th>SALARY</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Position</th>
+                <th>Salary</th>
             </tr>
         </thead>
 

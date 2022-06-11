@@ -12,7 +12,7 @@
 
 <body>
 
-    <h1 class="text-center">Payroll Employees</h1>
+    <h1 class="text-center">PAYROLL EMPLOYEE</h1>
     <table class="table table-dark">
         @php
             $cont = 1;

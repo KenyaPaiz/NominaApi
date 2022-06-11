@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
-    <h1>List of employees by position</h1>
-    <table>
+    <h1 class="text-center">LIST OF THE EMPLOYEES BY POSITION</h1>
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>#</th>
@@ -25,7 +28,7 @@
                 $cont = 1;
             @endphp
             @foreach ($employee as $item)
-                <tr>
+                <tr class="text-center">
                     <td>@php echo $cont++ @endphp</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->lastName }}</td>
@@ -36,6 +39,11 @@
                 </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr class="text-center">
+                <td colspan='5'>TAXES:  ISR = 3.5%  ---  ISSS = 7%  ---  AFP = 7%  ---  </td>
+            </tr>
+        </tfoot>
     </table>
 </body>
 </html>
