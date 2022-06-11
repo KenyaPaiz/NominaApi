@@ -22,7 +22,9 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>LastName</th>
+                <th>Position</th>
                 <th>Salary</th>
+                <th>Taxes</th>
                 <th>Net Salary</th>
             </tr>
         </thead>
@@ -33,7 +35,9 @@
                     <td>@php echo $cont++; @endphp</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->lastName }}</td>
+                    <td>{{ $item->position }}</td>
                     <td>$ {{ $item->salary }}</td>
+                    <td>${{ $item->taxes }}</td>
                     <td>$ {{ $item->netSalary }}</td>
                 </tr>
             @endforeach
@@ -41,7 +45,7 @@
 
         <tfoot>
             <tr class="text-center">
-                <td colspan='5'>TAXES:  ISR = 7%  ---  ISSS = 7%  ---  IVA = 14%  ---  </td>
+                <td colspan='5'>TAXES:  ISR = 3.5%  ---  ISSS = 7%  ---  AFP = 7%  ---  </td>
             </tr>
         </tfoot>
     </table>

@@ -47,21 +47,31 @@ class EmployeesController extends Controller{
         $employee->save();
 
         //constants 
-        define("ISR",0.1);
-        define("ISSS",0.07);
+        define("ISR",0.035);
+        define("ISSS",0.03);
         define("AFP",0.07);
         $idEmp = $employee->id;
         $isr = $total * ISR;
         $isss = $total * ISSS;
         $afp = $total * AFP;
+
         //calculate of taxes
-        $result = $total - ($isr + $isss + $afp);
+        if($total >= 550){
+            $taxesEmp = $isr + $isss + $afp;
+            $result = $total - $taxesEmp;
+        }else{
+            $taxesEmp = $isss + $afp;
+            $result = $total - $taxesEmp;
+        }
+            
+        
         /** SAVE in table Payrol */
         $taxes = new PayRoll();
         $taxes->idEmployee = $idEmp;
+        $taxes->taxes = $taxesEmp;
         $taxes->salaryTotal = $result;
         $taxes->save();
-        
+
         return redirect()->route('employe.table3');
     }
 

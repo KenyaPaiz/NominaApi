@@ -16,6 +16,7 @@
                 <th>Lastname</th>
                 <th>Position</th>
                 <th>Salary</th>
+                <th>Taxes</th>
                 <th>Net Salary</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                     <td>{{ $item->lastName }}</td>
                     <td>{{ $item->position }}</td>
                     <td>$ {{ $item->salary }}</td>
+                    <td>$ {{ $item->taxes }}</td>
                     <td>$ {{ $item->total}}</td>
                 </tr>
             @endforeach
