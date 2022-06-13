@@ -84,14 +84,15 @@ class EmployeesController extends Controller{
 
     public function edit($id){
         $employee = Employee::find($id);
-        return view("BossViews.updateEmployee", array("employee" => $employee));
+        $department = Department::all();
+        return view("BossViews.updateEmployee", array("employee" => $employee, "department" => $department));
     }
 
     public function update(Request $request, $id){
         $employee = Employee::find($id);
         $employee->name = $request->post('name');
         $employee->lastName = $request->post('lastName');
-        $employee->address = $request->post('address');
+        $employee->idDepartment = $request->post('department');
         $employee->phoneNumber = $request->post('phoneNumber');
         $employee->position = $request->post('position');
         $employee->salary = $request->post('salary');
