@@ -20,6 +20,10 @@
                         Show Employee</a></li>
                 <li class=""><a href="{{ route('company.table2') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
                         Show Company</a></li>
+                <li class=""><a href="{{ route('employe.tableInactive') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-eye"></i>
+                        Employee history</a></li>
+                <li class=""><a href="{{ route('boss.filter') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-file-pdf"></i>
+                        Report</a></li>
             </ul>
             <hr class="h-color mx-2">
 
@@ -45,6 +49,7 @@
                             <li class="nav-item  ">
                                 <!-- <a class="nav-link active" aria-current="page" href="#">Profile</a> -->
                                 <p class="name-profile">
+                                    Welcome  
                                     @php
                                         //get boss name for log ing
                                         echo session('bossName');

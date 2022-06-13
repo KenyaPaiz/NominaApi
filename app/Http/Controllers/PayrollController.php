@@ -10,8 +10,8 @@ class PayrollController extends Controller
 {
     
     public function calculateTaxes($idEmp, Request $request){
-        define("ISR",0.1);
-        define("ISSS",0.07);
+        define("ISR",0.035);
+        define("ISSS",0.03);
         define("AFP",0.07);
         $token = $request->header('Authorization');
         $boss = Boss::all();

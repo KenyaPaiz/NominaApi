@@ -39,12 +39,15 @@
 
                 <div class="container">
                     <div class="boxtitle">
-                        <h6>Addrees</h6>
+                        <h6>Department</h6>
                     </div>
-                    <div class="cont-input control-form">
-                        <input class="input-contenedor" type="text" name="address" placeholder="State, city, street..." id="address">
-                        <br>
-                        <small>Error message</small>
+                    <div class="cont-input">
+                        <select name="department" id="">
+                            <option value=""></option>
+                            @foreach ($department as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <br>
@@ -52,19 +55,6 @@
                 <div class="container">
                     <div class="boxtitle">
                         <h6>Position</h6>
-                    </div>
-                    <div class="cont-input control-form">
-                        <input class="input-contenedor" type="text" name="position" placeholder="Position" id="position">
-                        <br>
-                        <small>Error message</small>
-                    </div>
-                </div>
-                <br>
-
-                <div class="container">
-                    <div class="boxtitle">
-                        <h6>Salary</h6>
-                    </div>
                     <div class="cont-input control-form">
                         <input class="input-contenedor" type="number" name="salary" placeholder="$0.00" id="salary">
                         <br>
