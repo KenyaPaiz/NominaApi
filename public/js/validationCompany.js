@@ -1,14 +1,12 @@
-
-alert('asdasd');
 const form = document.getElementById('form');
-const username = document.getElementById('username');
-const password = document.getElementById('password');
+const nameC = document.getElementById('name');
+const address = document.getElementById('address');
 
 form.addEventListener('submit', (e) => {
-  const usernameValue = username.value.trim();
-  const passwordValue = password.value.trim();
+  const nameValue = nameC.value.trim();
+  const addressValue = address.value.trim();
 
-  if(usernameValue ==='' || passwordValue === ''){
+  if(nameValue ==='' || addressValue === ''){
     e.preventDefault();
   }
   checkInputs();
@@ -16,17 +14,17 @@ form.addEventListener('submit', (e) => {
 
 function checkInputs() {
   // get the values from inputs
-  const usernameValue = username.value.trim();
-  const passwordValue = password.value.trim();
+  const nameValue = nameC.value.trim();
+  const addressValue = address.value.trim();
 
-  if(usernameValue === '') {
+  if(nameValue === '') {
     // show error
     // add error class
-    setErrorFor(username, 'Username cannot be blank');
+    setErrorFor(nameC, 'Username cannot be blank');
   }
 
-  if(passwordValue === '') {
-    setErrorFor(password, "Password cannot be blank");
+  if(addressValue === '') {
+    setErrorFor(address, "Password cannot be blank");
   }
 
 }
