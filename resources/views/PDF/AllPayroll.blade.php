@@ -9,9 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <title>Payroll REPORT</title>
 </head>
-
 <body>
-
     <h1 class="text-center">PAYROLL EMPLOYEE</h1>
     <table class="table table-dark">
         @php

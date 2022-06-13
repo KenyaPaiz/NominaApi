@@ -51,7 +51,6 @@
         </tbody>
     </table>
     <div class="content options">
-        <a class="btn btn-primary" href="{{ route('pdf') }}">PDF</a>
         <a class="btn btn-primary" href="{{ route('boss.taxes') }}">ALL PAYROLS</a>
     </div>
 </main>

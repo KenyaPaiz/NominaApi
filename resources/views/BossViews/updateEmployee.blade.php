@@ -37,10 +37,15 @@
                 <!-- Address -->
                 <div class="container">
                     <div class="boxtitle">
-                        <h6>Addrees</h6>
+                        <h6>Department</h6>
                     </div>
                     <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="address" value="{{$employee->address}}">                    
+                        <select name="department" id="">
+                            <option value="{{$employee->idDepartment}}">{{ $employee->idDepartment  }}</option>
+                            @foreach ($department as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>                 
                     </div>   
                 </div>
                 <br>

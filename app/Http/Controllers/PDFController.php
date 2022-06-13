@@ -9,16 +9,6 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
 {
-    public function generatePDF(){
-        $boss = session('bossId');
-        $employees = Employee::where('idBoss','=',$boss)->where('idStatus','=',1)->get();
-        $data = ["employee" => $employees];
-        $pdf = PDF::loadView('PDF.Employee', $data);
-        
-        //return $pdf->download('employee.pdf');
-        return $pdf->stream();
-    }
-
     public function taxes_employee(){
         $boss = session('bossId');
         $payroll = PayRoll::join('employee', 'payroll.idEmployee', '=', 'employee.id')
