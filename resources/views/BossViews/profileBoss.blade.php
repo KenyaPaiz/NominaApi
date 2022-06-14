@@ -7,6 +7,8 @@
 <body>
     @foreach ($boss as $item)
         {{$item->name}}
+
+        {{$item->lastName}}
     @endforeach
 </body>
 @endsection

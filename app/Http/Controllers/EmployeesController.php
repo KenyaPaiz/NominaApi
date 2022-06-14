@@ -85,7 +85,9 @@ class EmployeesController extends Controller{
     /** show by boss */
     public function showByBoss($id){
         $idBoss = session('bossId');
-        $employee = Employee::where("id","=",$id)->where("idBoss","=",$idBoss)->get();
+        $employee = Employee::join("department","employee.idDepartment","=","department.id")
+        ->where("employee.id","=",$id)->where("idBoss","=",$idBoss)
+        ->select("employee.*","department.name as department")->get();
 
         return view("BossViews.profileEmployee", array("employee" => $employee));
     }
