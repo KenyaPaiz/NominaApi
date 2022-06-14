@@ -22,7 +22,6 @@
                         <br>
                         <small>Error message</small>
                     </div>
-
                 </div>
                 <br>
                 <div class="container">
@@ -41,13 +40,15 @@
                     <div class="boxtitle">
                         <h6>Department</h6>
                     </div>
-                    <div class="cont-input">
-                        <select name="department" id="">
-                            <option value=""></option>
+                    <div class="cont-input control-form">
+                        <select name="department" id="department" required>
+                            <option value="-1">Seleccionar...</option>
                             @foreach ($department as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach
                         </select>
+                        <br>
+                        <small>Error message</small>
                     </div>
                 </div>
                 <br>
@@ -55,6 +56,19 @@
                 <div class="container">
                     <div class="boxtitle">
                         <h6>Position</h6>
+                    </div>
+                    <div class="cont-input control-form">
+                        <input class="input-contenedor" type="text" name="position" placeholder="Position" id="position">
+                        <br>
+                        <small>Error message</small>
+                    </div>
+                </div>
+                <br>
+
+                <div class="container">
+                    <div class="boxtitle">
+                        <h6>Salary</h6>
+                    </div>
                     <div class="cont-input control-form">
                         <input class="input-contenedor" type="number" name="salary" placeholder="$0.00" id="salary">
                         <br>
@@ -117,5 +131,6 @@
         </div>
     </section>
     <script src="{{ url('/') }}/js/validationEmployee.js"></script>
+
 @endsection
 
