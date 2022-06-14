@@ -26,7 +26,6 @@
                         Report</a></li>
             </ul>
             <hr class="h-color mx-2">
-
             <ul class="lust-unstyled px-2">
                 <li class=""><a href="{{ route('login.view') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</a></li>
             </ul>
@@ -35,7 +34,6 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">
-
                         <a class="navbar-brand fs-4" href="#">Boss Profile</a>
                         <button class="btn px-1 py-0 open-btn"><i class="fa-solid fa-bars-staggered"></i></button>
                     </div>
@@ -50,14 +48,8 @@
                                 <!-- <a class="nav-link active" aria-current="page" href="#">Profile</a> -->
                                 <p class="name-profile">
                                     Welcome  
-                                    @php
-                                        //get boss name for log ing
-                                        echo session('bossName');
-                                    @endphp
+                                    <a href="{{ route('boss.profile') }}">@php echo session('bossName'); @endphp</a>
                                 </p>
-                            </li>
-                            <li>
-                                <div class="img-perfil"></div>
                             </li>
                         </ul>
                     </div>
@@ -69,8 +61,8 @@
         </div>
     </div>
     {{-- <script src="{{ url('/') }}/js/validationLogin.js"></script> --}}
-
 </body>
+<script src="{{ url('/') }}/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/0ef283508d.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>

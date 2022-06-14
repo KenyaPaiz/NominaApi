@@ -41,7 +41,7 @@
                         <h6>Department</h6>
                     </div>
                     <div class="cont-input control-form">
-                        <select name="department" id="department" required>
+                        <select class="input-contenedor" name="department" id="department" required>
                             <option value="-1">Seleccionar...</option>
                             @foreach ($department as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>

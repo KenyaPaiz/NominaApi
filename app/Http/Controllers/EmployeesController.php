@@ -76,7 +76,9 @@ class EmployeesController extends Controller{
 
     public function show(){
         $id_employee = session('employeeId');
-        $employee = Employee::where("id","=", $id_employee)->get();
+        $employee = Employee::join("department","employee.idDepartment","=","department.id")
+        ->where("employee.id","=",$id_employee)
+        ->select("employee.*","department.name as department")->get();
         return view("EmployeesViews.profile", array("employee" => $employee));
     }
 

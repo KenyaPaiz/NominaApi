@@ -40,7 +40,7 @@
                         <h6>Department</h6>
                     </div>
                     <div class="cont-input">
-                        <select name="department" id="">
+                        <select class="input-contenedor" name="department" id="">
                             <option value="{{$employee->idDepartment}}">{{ $employee->idDepartment  }}</option>
                             @foreach ($department as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>

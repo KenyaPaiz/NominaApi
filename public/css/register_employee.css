@@ -15,7 +15,7 @@ body{
     justify-content: center;
     background-color: rgb(255, 255, 255, 100%);
     width: 500px;
-    height: 900px;
+    height: 100%;
     position: relative;
     margin: auto;
     border-radius: 30px;
@@ -120,6 +120,7 @@ body{
 #button{
   justify-content: center;
   margin-top: 7px;
+  margin-bottom: 20px;
 }
 
 /*Company*/
@@ -128,7 +129,7 @@ body{
   justify-content: center;
   background-color: rgb(255, 255, 255, 100%);
   width: 550px;
-  height: 275px;
+  height: 100%;
   position: relative;
   margin: auto;
   border-radius: 30px;

@@ -10,14 +10,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class= "text-center">LIST OF THE EMPLOYEES BY DEPARTAMENT</h1>
+    <h1 class= "text-center">LIST OF THE EMPLOYEES BY DEPARTMENT</h1>
     <table class = "table table-dark">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Lastname</th>
-                <th>Deparment</th>
+                <th>Department</th>
                 <th>Position</th>
                 <th>Salary</th>
                 <th>Taxes</th>

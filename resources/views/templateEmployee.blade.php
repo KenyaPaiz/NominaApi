@@ -46,9 +46,6 @@
                                     @endphp
                                 </p>
                             </li>
-                            <li>
-                                <div class="img-perfil"></div>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -59,6 +56,7 @@
         </div>
     </div>
 </body>
+<script src="{{ url('/') }}/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/0ef283508d.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>

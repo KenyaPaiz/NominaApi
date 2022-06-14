@@ -41,7 +41,13 @@ class BossController extends Controller
         $boss->save();
 
         return redirect()->route("login.view");
- 
+    }
+
+    public function show(){
+        $id_boss = session('bossId');
+        $boss = Boss::where("id","=",$id_boss)->get();
+
+        return view("BossViews.profileBoss", array("boss" => $boss));
     }
 
     public function edit($id){

@@ -50,8 +50,7 @@ Route::post('/store',[BossController::class, 'store'])->name('boss.register');
 Route::get('/edit/{id}',[BossController::class, 'edit'])->name('boss.edits');
 Route::put('/update/{id}',[BossController::class, 'update'])->name('boss.modify');
 Route::put('/deactive/{id}',[BossController::class, 'destroy'])->name('boss.inactive');
-Route::get('/showById/{id}',[EmployeesController::class, 'showByBoss'])->name('boss.employee');
-
+Route::get('/profileBoss',[BossController::class, 'show'])->name('boss.profile');
 
 //Company Data
 Route::get('/companyIndex',[CompanyController::class, 'index'])->name('company.table2');
@@ -70,6 +69,7 @@ Route::get('/editEmployee/{id}',[EmployeesController::class, 'edit'])->name('emp
 Route::put('/updateEmployee/{id}',[EmployeesController::class, 'update'])->name('employee.modify');
 Route::get('/showEmployeeInactive',[EmployeesController::class, 'showInactive'])->name('employe.tableInactive');
 Route::put('/deactiveEmployee/{id}',[EmployeesController::class, 'destroy'])->name('employee.inactive');
+Route::get('/showById/{id}',[EmployeesController::class, 'showByBoss'])->name('boss.employee');
 
 // PDF
 Route::get('/generatePDF',[PDFController::class, 'generatePDF'])->name('pdf');
