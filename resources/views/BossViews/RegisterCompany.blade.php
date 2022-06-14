@@ -6,7 +6,7 @@
 @section('content')
     <section class="section-flex">
         <div class="form_containerCompany">
-            <form action="{{ route('company.save') }}" method="POST">
+            <form id="form" action="{{ route('company.save') }}" method="POST">
                 @csrf
 
                 <div class="TitleBoss">
@@ -17,19 +17,23 @@
                     <div class="boxtitle">
                         <h6>Name</h6>
                     </div>
-                    <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="name" placeholder="Name">
-                    </div>    
+                    <div class="cont-input control-form">
+                        <input class="input-contenedor" type="text" name="name" placeholder="Name" id="name">
+                        <br>
+                        <small>Error message</small>
+                    </div>
                 </div>
                 <br>
-    
+
                 <div class="container">
                     <div class="boxtitle">
                         <h6>Addrees</h6>
                     </div>
-                    <div class="cont-input">
-                        <input class="input-contenedor" type="text" name="address" placeholder="State, city, street...">
-                    </div>   
+                    <div class="cont-input control-form" >
+                        <input class="input-contenedor" type="text" name="address" placeholder="State, city, street..." id="address">
+                        <br>
+                        <small>Error message</small>
+                    </div>
                 </div>
                 <br>
                 <div class="button-box">
@@ -38,4 +42,6 @@
             </form>
         </div>
     </section>
-@endsection
+    <script src="{{ url('/') }}/js/validationCompany.js"></script>
+    @endsection
+
