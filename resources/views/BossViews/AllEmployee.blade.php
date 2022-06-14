@@ -61,7 +61,7 @@
         </tbody>
     </table>
     <div class="content options">
-        <a class="btn btn-primary" href="{{ route('boss.taxes') }}">ALL PAYROLS</a>
+        <a class="btn btn-primary" href="{{ route('boss.taxes') }}">ALL PAYROLLS</a>
     </div>
 </main>
 @endsection
