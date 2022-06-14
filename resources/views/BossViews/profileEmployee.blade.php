@@ -7,9 +7,6 @@
 @foreach ($employee as $item)
 <section class="section-flex">
     <div class="form_containerEmployee">
-        <!-- Profile Form -->
-        <form action="{{ route('employe.save') }}" method="POST">
-            @csrf
             <!-- Title -->
             <div class="TitleBoss">
                 <h1 class="Title1">Profile Employee</h1>
@@ -47,7 +44,6 @@
                     <p>${{ $item->salary }}</p>
                 </div>   
             </div>
-        </form>
     </div>
 </section>
 @endforeach

@@ -88,7 +88,7 @@ class EmployeesController extends Controller{
         $employee = Employee::join("department","employee.idDepartment","=","department.id")
         ->where("employee.id","=",$id)->where("idBoss","=",$idBoss)
         ->select("employee.*","department.name as department")->get();
-
+        
         return view("BossViews.profileEmployee", array("employee" => $employee));
     }
 
