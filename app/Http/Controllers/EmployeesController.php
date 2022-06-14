@@ -64,7 +64,6 @@ class EmployeesController extends Controller{
             $result = $total - $taxesEmp;
         }
             
-        
         /** SAVE in table Payrol */
         $taxes = new PayRoll();
         $taxes->idEmployee = $idEmp;
@@ -78,8 +77,15 @@ class EmployeesController extends Controller{
     public function show(){
         $id_employee = session('employeeId');
         $employee = Employee::where("id","=", $id_employee)->get();
-
         return view("EmployeesViews.profile", array("employee" => $employee));
+    }
+
+    /** show by boss */
+    public function showByBoss($id){
+        $idBoss = session('bossId');
+        $employee = Employee::where("id","=",$id)->where("idBoss","=",$idBoss)->get();
+
+        return view("BossViews.profileEmployee", array("employee" => $employee));
     }
 
     public function edit($id){
@@ -107,36 +113,15 @@ class EmployeesController extends Controller{
         $employee = Employee::join("department","employee.idDepartment","=","department.id")
             ->where("idStatus","=",2)->where("idBoss","=",$id_boss)
             ->select("employee.*","department.name as department")->get();
-
         return view("BossViews.AllEmployeeInactive", array("employeeInactive" => $employee));
     }
 
     public function destroy($id){
-        $boss = Employee::find($id);
-        $boss->idStatus = 2;
-        $boss->update();
+        $employee = Employee::find($id);
+        $employee->idStatus = 2;
+        $employee->update();
 
         return redirect()->route("employe.table3");
-    }
-
-    public function destroyAll($idBoss){
-        $data = array(
-            "idStatus" => 2
-        );
-
-        $employee = Employee::where("idBoss", $idBoss)->update($data);
-        if($employee == true){
-            $json = array(
-                "status" => 200,
-                "detail" => "all employees are inactive"
-            );
-        }else{
-            $json = array(
-                "status" => 404,
-                "detail" => "error"
-            );
-        }
-        return json_encode($json, true);
     }
 
 }

@@ -45,6 +45,8 @@
             </tr>
         </tfoot>
     </table>
+    <h5>Total Employees by Position: <b>{{$contador}}</b></h5>
+    <h5>Total Salary Paid: <b>${{$sum}}</b></h5>
 </body>
 </html>
 

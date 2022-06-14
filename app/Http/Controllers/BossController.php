@@ -45,7 +45,6 @@ class BossController extends Controller
     }
 
     public function edit($id){
-
         $boss = Boss::find($id);
         return view("AdminViews.updateBoss",array('boss' => $boss));
     }
@@ -77,14 +76,16 @@ class BossController extends Controller
         $id_boss = session('bossId');
         $postion = Employee::where("idBoss","=",$id_boss)->select("position")->distinct()->get();
         $department = Employee::join("department","employee.idDepartment", "=", "department.id")
-                    ->where("idBoss","=",$id_boss)->select("employee.idDepartment as id","department.name as name")->distinct()->get();
+                    ->where("idBoss","=",$id_boss)->where("employee.idStatus","=",1)
+                    ->select("employee.idDepartment as id","department.name as name")->distinct()->get();
         return view("BossViews.filterEmployee", array("position" => $postion, "department" => $department));
     }
     //filter by Deparment
     public function getFilterDeparment(){
         $id_boss = session('bossId');
         $department = Employee::join("department","employee.idDepartment", "=", "department.id")
-                    ->where("idBoss","=",$id_boss)->select("employee.idDepartment as id","department.name as name")->distinct()->get();
+                    ->where("idBoss","=",$id_boss)->where("employee.idStatus","=",1)
+                    ->select("employee.idDepartment as id","department.name as name")->distinct()->get();
         return view("BossViews.filterEmployee", array("department" => $department));
     }
 

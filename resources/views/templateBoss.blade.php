@@ -86,5 +86,9 @@
         $('.close-btn').on('click', function(){
             $('.sidebar').removeClass('active');
         });
+
+    function position(){
+        alert(":)");
+    }
 </script>
 </html>

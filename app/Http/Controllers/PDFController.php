@@ -26,28 +26,36 @@ class PDFController extends Controller
 
     //filter by position 
     public function filterPosition(Request $request){
+        $cont = 0;
+        $cont2 = 0;
         $position = $request->post("position");
 
         $employee = Employee::join("payroll", "payroll.idEmployee", "=", "employee.id")
                     ->where("position","=",$position)->where("idStatus","=",1)
                     ->select("employee.*","payroll.taxes as taxes","payroll.salaryTotal as total")->get();
-        $data = ["employee" => $employee];
+        foreach($employee as $value){
+            echo $cont++;
+            echo $cont2 += $value->total;
+        }
+        $data = ["employee" => $employee, "contador" => $cont, "sum" => $cont2];
         $pdf = PDF::loadView('PDF.filterPosition', $data);
         return $pdf->stream();
     }
     //filter by Deparment
     public function filterDeparment(Request $request){
         $cont = 0;
+        $cont2 = 0;
         $idDepartment = $request->post("department");
 
         $department = Employee::join("department","employee.idDepartment","=","department.id")
                     ->join("payroll", "payroll.idEmployee", "=", "employee.id")
                     ->where("idDepartment", "=", $idDepartment)->where("idStatus","=",1)->
                     select("employee.*","department.name as department","payroll.taxes as taxes","payroll.salaryTotal as total")->get();
-                    foreach($department as $value){
-                        $cont++;
-                    }
-        $data = ["department" => $department];
+        foreach($department as $value){
+            echo $cont++;
+            echo $cont2 += $value->total;
+        }
+        $data = ["department" => $department, "contador" => $cont, "sum" => $cont2];
         $pdf = PDF::loadView('PDF.filterDepartment', $data);
         return $pdf->stream();
     }

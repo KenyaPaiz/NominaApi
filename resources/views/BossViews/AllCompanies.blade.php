@@ -27,7 +27,9 @@
                         </form>
                     </td>   
                     <td>
-                        <form action="{{ route("company.inactive", $element->id) }}" method="GET">
+                        <form action="{{ route("company.inactive", $element->id) }}" method="POST">
+                            @method("PUT")
+                            @csrf
                             <button class="btn btn-danger" type="submit" name="delete">Delete</button>
                         </form>
                     </td>

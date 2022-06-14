@@ -21,7 +21,7 @@
                 <th>Department</th>
                 <th>Position</th>
                 <th>Salary</th>
-                <th colspan="2">Actions</th>
+                <th colspan="3">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -34,16 +34,26 @@
                     <td>{{ $item->department }}</td>
                     <td>{{ $item->position }}</td>
                     <td>$ {{ $item->salary }}</td>
+                    <!-- Edit Button -->
                     <td>
                         <form action="{{ route('employe.edits', $item->id) }}" method="GET">
                             <button class="btn btn-success" type="submit" name="editEmployee">Edit</button>
                         </form>
                     </td>
+                    <!-- Delete Button -->
                     <td>
                         <form action="{{ route("employee.inactive", $item->id) }}" method="POST">
                             @method("PUT")
                             @csrf
                             <button class="btn btn-danger" type="submit" name="deleteEmployee">Delete</button>
+                        </form>
+                    </td>
+                    <!-- Show Button -->
+                    <td>
+                        <form action="{{ route("boss.employee", $item->id) }}" method="POST">
+                            @method("GET")
+                            @csrf
+                            <button class="btn btn-info" type="submit" name="showEmployee">Show</button>
                         </form>
                     </td>
                 </tr>

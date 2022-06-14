@@ -50,6 +50,7 @@ Route::post('/store',[BossController::class, 'store'])->name('boss.register');
 Route::get('/edit/{id}',[BossController::class, 'edit'])->name('boss.edits');
 Route::put('/update/{id}',[BossController::class, 'update'])->name('boss.modify');
 Route::put('/deactive/{id}',[BossController::class, 'destroy'])->name('boss.inactive');
+Route::get('/showById/{id}',[EmployeesController::class, 'showByBoss'])->name('boss.employee');
 
 
 //Company Data
@@ -58,7 +59,7 @@ Route::get('/registerCompany',[CompanyController::class, 'create'])->name('compa
 Route::post('/storeCompany',[CompanyController::class, 'store'])->name('company.save');
 Route::get('/editCompany/{id}',[CompanyController::class, 'edit'])->name('company.edits');
 Route::put('/updateCompany/{id}',[CompanyController::class, 'update'])->name('company.modify');
-Route::delete('/deactiveCompany/{id}',[CompanyController::class, 'destroy'])->name('company.inactive');
+Route::put('/deactiveCompany/{id}',[CompanyController::class, 'destroy'])->name('company.inactive');
 
 //Employee Data
 Route::get('/employeIndex',[EmployeesController::class, 'index'])->name('employe.table3');
