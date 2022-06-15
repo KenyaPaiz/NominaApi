@@ -41,7 +41,6 @@
                     </div>
                     <div class="cont-input">
                         <select class="input-contenedor" name="department" id="">
-                            <option value="{{$employee->idDepartment}}">{{ $employee->idDepartment  }}</option>
                             @foreach ($department as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
@@ -66,16 +65,6 @@
                     </div>
                     <div class="cont-input">
                         <input class="input-contenedor" type="text" name="position" value="{{$employee->position}}"> 
-                    </div>
-                </div>
-                <br>
-                <!-- Salary -->
-                <div class="container">
-                    <div class="boxtitle">
-                        <h6>Salary</h6>
-                    </div>
-                    <div class="cont-input">
-                        <input class="input-contenedor" type="number" name="salary" value="{{$employee->salary}}">  
                     </div>
                 </div>
                 <br>

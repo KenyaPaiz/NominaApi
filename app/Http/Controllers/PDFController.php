@@ -10,13 +10,16 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class PDFController extends Controller
 {
     public function taxes_employee(){
+        $cont = 0;
         $boss = session('bossId');
         $payroll = PayRoll::join('employee', 'payroll.idEmployee', '=', 'employee.id')
                     ->where('employee.idStatus','=',1)->where('employee.idBoss','=',$boss)
                     ->select('employee.name as name','employee.lastName as lastName', 'employee.position as position', 'employee.salary as salary',
                     'payroll.salaryTotal as netSalary','payroll.taxes as taxes')->get();
-
-        $data = ["payroll" => $payroll];
+        foreach($payroll as $value){
+            echo $cont++;
+        }
+        $data = ["payroll" => $payroll, "contador" => $cont];
         $pdf = PDF::loadView('PDF.AllPayroll', $data);
         
         //return $pdf->download('employee.pdf');

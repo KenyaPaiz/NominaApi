@@ -8,7 +8,7 @@ use App\Models\Employee;
 
 class PayrollController extends Controller
 {
-    
+    // Method API
     public function calculateTaxes($idEmp, Request $request){
         define("ISR",0.035);
         define("ISSS",0.03);

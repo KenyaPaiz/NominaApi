@@ -85,8 +85,10 @@ class EmployeesController extends Controller{
     /** show by boss */
     public function showByBoss($id){
         $idBoss = session('bossId');
-        $employee = Employee::where("id","=",$id)->where("idBoss","=",$idBoss)->get();
-
+        $employee = Employee::join("department","employee.idDepartment","=","department.id")
+        ->where("employee.id","=",$id)->where("idBoss","=",$idBoss)
+        ->select("employee.*","department.name as department")->get();
+        
         return view("BossViews.profileEmployee", array("employee" => $employee));
     }
 
@@ -103,8 +105,7 @@ class EmployeesController extends Controller{
         $employee->idDepartment = $request->post('department');
         $employee->phoneNumber = $request->post('phoneNumber');
         $employee->position = $request->post('position');
-        $employee->salary = $request->post('salary');
-
+        
         $employee->update();
 
         return redirect()->route("employe.table3");
