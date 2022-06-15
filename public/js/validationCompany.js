@@ -20,11 +20,11 @@ function checkInputs() {
   if(nameValue === '') {
     // show error
     // add error class
-    setErrorFor(nameC, 'Username cannot be blank');
+    setErrorFor(nameC, 'Name cannot be blank');
   }
 
   if(addressValue === '') {
-    setErrorFor(address, "Password cannot be blank");
+    setErrorFor(address, "Address cannot be blank");
   }
 
 }
