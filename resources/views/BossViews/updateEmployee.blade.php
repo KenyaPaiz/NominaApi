@@ -68,16 +68,6 @@
                     </div>
                 </div>
                 <br>
-                <!-- Salary -->
-                <div class="container">
-                    <div class="boxtitle">
-                        <h6>Salary</h6>
-                    </div>
-                    <div class="cont-input">
-                        <input class="input-contenedor" type="number" name="salary" value="{{$employee->salary}}">  
-                    </div>
-                </div>
-                <br>
                 <div class="button-box">
                     <input id="button" type="submit" name="update" value="Update" class="btn btn-success">
                 </div>

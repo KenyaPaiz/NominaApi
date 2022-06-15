@@ -105,8 +105,7 @@ class EmployeesController extends Controller{
         $employee->idDepartment = $request->post('department');
         $employee->phoneNumber = $request->post('phoneNumber');
         $employee->position = $request->post('position');
-        $employee->salary = $request->post('salary');
-
+        
         $employee->update();
 
         return redirect()->route("employe.table3");

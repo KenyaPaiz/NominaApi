@@ -47,6 +47,8 @@
             </tr>
         </tfoot>
     </table>
+
+    <h5>Total employees: <b>{{$contador}}</b></h5>
 </body>
 </html>
 
