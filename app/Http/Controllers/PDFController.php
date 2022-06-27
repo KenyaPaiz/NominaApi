@@ -26,7 +26,6 @@ class PDFController extends Controller
         return $pdf->stream();
     }
 
-
     //filter by position 
     public function filterPosition(Request $request){
         $cont = 0;
